@@ -1,17 +1,13 @@
-//
-//  WropesmonApp.swift
-//  Wropesmon
-//
-//  Created by Serhii Anp on 08.09.2025.
-//
-
 import SwiftUI
 
 @main
-struct WropesmonApp: App {
+struct SportIQApp: App {
+    @StateObject private var appViewModel = AppViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appViewModel)
         }
     }
 }
