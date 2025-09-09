@@ -1,6 +1,7 @@
 import SwiftUI
 import Combine
 
+// MARK: - ViewModel
 class QuizViewModel: ObservableObject {
     @Published var currentQuiz: Quiz?
     @Published var currentQuestionIndex = 0
@@ -9,14 +10,12 @@ class QuizViewModel: ObservableObject {
     @Published var showAnswer = false
     @Published var quizCompleted = false
     @Published var timeRemaining: TimeInterval?
+    @Published var timeSpent: TimeInterval = 0
+    @Published var isAnswerCorrect: Bool?
     
-    private var cancellables = Set<AnyCancellable>()
-    private let analyticsService = AnalyticsService.shared
-    private let storageService: StorageServiceProtocol
-    
-    init(storageService: StorageServiceProtocol = StorageService()) {
-        self.storageService = storageService
-    }
+    private var timer: Timer?
+    private var startTime: Date?
+    private var quizResults: [QuizResult] = []
     
     var currentQuestion: QuizQuestion? {
         guard let quiz = currentQuiz,
@@ -36,8 +35,8 @@ class QuizViewModel: ObservableObject {
         quizCompleted = false
         selectedAnswer = nil
         showAnswer = false
-        
-        analyticsService.logEvent(.quizStarted(category: quiz.category.rawValue))
+        timeSpent = 0
+        startTime = Date()
         
         if let timeLimit = quiz.timeLimit {
             timeRemaining = timeLimit
@@ -46,12 +45,17 @@ class QuizViewModel: ObservableObject {
     }
     
     func selectAnswer(_ index: Int) {
-        guard !showAnswer else { return }
+        guard !showAnswer, let question = currentQuestion else { return }
+        
         selectedAnswer = index
         showAnswer = true
+        isAnswerCorrect = index == question.correctAnswer
         
-        if let question = currentQuestion, index == question.correctAnswer {
+        if isAnswerCorrect == true {
             score += question.points
+            playSound(named: "correct")
+        } else {
+            playSound(named: "wrong")
         }
     }
     
@@ -62,6 +66,7 @@ class QuizViewModel: ObservableObject {
             currentQuestionIndex += 1
             selectedAnswer = nil
             showAnswer = false
+            isAnswerCorrect = nil
         } else {
             completeQuiz()
         }
@@ -69,48 +74,76 @@ class QuizViewModel: ObservableObject {
     
     private func completeQuiz() {
         quizCompleted = true
-        guard let quiz = currentQuiz else { return }
+        stopTimer()
         
-        analyticsService.logEvent(.quizCompleted(
-            category: quiz.category.rawValue,
-            score: score
-        ))
+        guard let quiz = currentQuiz, let startTime = startTime else { return }
         
-        // Сохраняем результат
-        do {
-            let result = QuizResult(
-                quizId: quiz.id,
-                score: score,
-                totalPossible: quiz.totalPoints,
-                completedAt: Date()
-            )
-            try storageService.save(result, forKey: "quiz_result_\(quiz.id)")
-        } catch {
-            print("Failed to save quiz result: \(error)")
-        }
+        let result = QuizResult(
+            quizId: quiz.id,
+            category: quiz.category,
+            score: score,
+            totalPossible: quiz.totalPoints,
+            completedAt: Date(),
+            timeSpent: Date().timeIntervalSince(startTime)
+        )
+        
+        quizResults.append(result)
+        saveResults()
+        playSound(named: "complete")
     }
     
     private func startTimer() {
-        Timer.publish(every: 1, on: .main, in: .common)
-            .autoconnect()
-            .sink { [weak self] _ in
-                guard let self = self,
-                      var remaining = self.timeRemaining else { return }
-                
-                remaining -= 1
-                self.timeRemaining = remaining
-                
-                if remaining <= 0 {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            
+            if let remaining = self.timeRemaining {
+                if remaining > 0 {
+                    self.timeRemaining = remaining - 1
+                    self.timeSpent += 1
+                } else {
                     self.completeQuiz()
                 }
+            } else {
+                self.timeSpent += 1
             }
-            .store(in: &cancellables)
+        }
     }
-}
-
-struct QuizResult: Codable {
-    let quizId: String
-    let score: Int
-    let totalPossible: Int
-    let completedAt: Date
+    
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    private func saveResults() {
+        if let encoded = try? JSONEncoder().encode(quizResults) {
+            UserDefaults.standard.set(encoded, forKey: "quiz_results")
+        }
+    }
+    
+    func loadResults() {
+        if let data = UserDefaults.standard.data(forKey: "quiz_results"),
+           let results = try? JSONDecoder().decode([QuizResult].self, from: data) {
+            quizResults = results
+        }
+    }
+    
+    func getBestResults() -> [QuizResult] {
+        var bestResults: [SportCategory: QuizResult] = [:]
+        
+        for result in quizResults {
+            if let currentBest = bestResults[result.category] {
+                if result.score > currentBest.score {
+                    bestResults[result.category] = result
+                }
+            } else {
+                bestResults[result.category] = result
+            }
+        }
+        
+        return Array(bestResults.values).sorted { $0.score > $1.score }
+    }
+    
+    private func playSound(named: String) {
+        // Реализация воспроизведения звука
+    }
 }

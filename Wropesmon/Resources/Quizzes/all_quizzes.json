@@ -1,0 +1,2854 @@
+{
+  "quizzes": [
+    {
+      "category": "football",
+      "questions": [
+        {
+          "id": "1",
+          "question": "How many players are there on a football (soccer) team on the field?",
+          "options": [
+            "10",
+            "11",
+            "12",
+            "9"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A football team has 11 players on the field.",
+          "points": 10,
+          "imageName": "football_team"
+        },
+        {
+          "id": "2",
+          "question": "What is the duration of a standard football match?",
+          "options": [
+            "80 minutes",
+            "90 minutes",
+            "100 minutes",
+            "120 minutes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A standard football match lasts 90 minutes (two 45-minute halves).",
+          "points": 10,
+          "imageName": "football_match"
+        },
+        {
+          "id": "3",
+          "question": "What does FIFA stand for?",
+          "options": [
+            "Fédération Internationale de Football Association",
+            "European Football Association",
+            "World Football League",
+            "Professional Football Organization"
+          ],
+          "correctAnswer": 0,
+          "explanation": "FIFA stands for Fédération Internationale de Football Association.",
+          "points": 15,
+          "imageName": "fifa_logo"
+        },
+        {
+          "id": "4",
+          "question": "Which country won the first FIFA World Cup in 1930?",
+          "options": [
+            "Brazil",
+            "Uruguay",
+            "Germany",
+            "Italy"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Uruguay hosted and won the inaugural World Cup in 1930.",
+          "points": 15,
+          "imageName": "world_cup_1930"
+        },
+        {
+          "id": "5",
+          "question": "What is the maximum number of substitutions allowed in most competitions today (excluding special rules)?",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Most modern competitions allow up to five substitutions.",
+          "points": 10,
+          "imageName": "substitutions"
+        },
+        {
+          "id": "6",
+          "question": "Which position is primarily responsible for preventing goals?",
+          "options": [
+            "Striker",
+            "Midfielder",
+            "Defender",
+            "Goalkeeper"
+          ],
+          "correctAnswer": 3,
+          "explanation": "The goalkeeper's main role is to stop the ball from entering the net.",
+          "points": 10,
+          "imageName": "goalkeeper_save"
+        },
+        {
+          "id": "7",
+          "question": "What is given for a serious foul inside the penalty area?",
+          "options": [
+            "Corner kick",
+            "Free kick",
+            "Penalty kick",
+            "Throw-in"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A direct foul by the defense inside the box results in a penalty kick.",
+          "points": 10,
+          "imageName": "penalty_kick"
+        },
+        {
+          "id": "8",
+          "question": "How many referees use VAR in the video booth?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Typically, a VAR and an assistant VAR operate together in the booth.",
+          "points": 10,
+          "imageName": "var_room"
+        },
+        {
+          "id": "9",
+          "question": "Which club has won the most UEFA Champions League titles?",
+          "options": [
+            "Liverpool",
+            "Real Madrid",
+            "AC Milan",
+            "Bayern Munich"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Real Madrid holds the record for the most Champions League titles.",
+          "points": 15,
+          "imageName": "ucl_trophy"
+        },
+        {
+          "id": "10",
+          "question": "What is an offside offense?",
+          "options": [
+            "Any pass backward",
+            "A player ahead of both ball and second-last opponent at pass",
+            "A foul in midfield",
+            "A goalkeeper handling outside the box"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Offside occurs when the attacker is closer to the opponent’s goal than both the ball and the second-last defender at the moment the ball is played, and becomes involved in active play.",
+          "points": 15,
+          "imageName": "offside_diagram"
+        },
+        {
+          "id": "11",
+          "question": "How many yards is the penalty spot from the goal line?",
+          "options": [
+            "8 yards",
+            "10 yards",
+            "12 yards",
+            "14 yards"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The penalty mark is 12 yards (10.97 m) from the goal line.",
+          "points": 10,
+          "imageName": "penalty_spot"
+        },
+        {
+          "id": "12",
+          "question": "Which team is nicknamed the 'Three Lions'?",
+          "options": [
+            "Germany",
+            "Argentina",
+            "England",
+            "France"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The England national team is known as the 'Three Lions'.",
+          "points": 10,
+          "imageName": "three_lions"
+        },
+        {
+          "id": "13",
+          "question": "What color card can a referee show to send a player off?",
+          "options": [
+            "Yellow",
+            "Red",
+            "Blue",
+            "Green"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A red card results in a player being sent off.",
+          "points": 10,
+          "imageName": "red_card"
+        },
+        {
+          "id": "14",
+          "question": "Which tournament is played every four years and features national teams?",
+          "options": [
+            "UEFA Champions League",
+            "Copa Libertadores",
+            "FIFA World Cup",
+            "UEFA Europa League"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The FIFA World Cup is contested by national teams every four years.",
+          "points": 10,
+          "imageName": "world_cup"
+        },
+        {
+          "id": "15",
+          "question": "What is a hat-trick?",
+          "options": [
+            "Three assists",
+            "Three goals by one player",
+            "Three saves",
+            "Three corners"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A hat-trick is when a player scores three goals in one match.",
+          "points": 10,
+          "imageName": "hat_trick"
+        },
+        {
+          "id": "16",
+          "question": "Which position often wears number 9?",
+          "options": [
+            "Center forward",
+            "Goalkeeper",
+            "Left back",
+            "Defensive midfielder"
+          ],
+          "correctAnswer": 0,
+          "explanation": "The traditional number 9 is the center forward/striker.",
+          "points": 10,
+          "imageName": "number_9"
+        },
+        {
+          "id": "17",
+          "question": "Which country hosts the 'El Clásico' rivalry clubs?",
+          "options": [
+            "Italy",
+            "England",
+            "Spain",
+            "Germany"
+          ],
+          "correctAnswer": 2,
+          "explanation": "El Clásico features Real Madrid and Barcelona from Spain.",
+          "points": 10,
+          "imageName": "el_clasico"
+        },
+        {
+          "id": "18",
+          "question": "What is stoppage time?",
+          "options": [
+            "Break between halves",
+            "Extra time after a draw",
+            "Time added to compensate for stoppages",
+            "Injury timeouts"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Stoppage (added) time compensates for delays during each half.",
+          "points": 10,
+          "imageName": "stoppage_time"
+        },
+        {
+          "id": "19",
+          "question": "How many minutes is each extra-time period in knockout matches?",
+          "options": [
+            "10",
+            "12",
+            "15",
+            "20"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Extra time is two periods of 15 minutes each.",
+          "points": 10,
+          "imageName": "extra_time"
+        },
+        {
+          "id": "20",
+          "question": "Which body writes the Laws of the Game?",
+          "options": [
+            "UEFA",
+            "IFAB",
+            "CONMEBOL",
+            "CAF"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The International Football Association Board (IFAB) maintains the Laws of the Game.",
+          "points": 15,
+          "imageName": "ifab"
+        }
+      ]
+    },
+    {
+      "category": "basketball",
+      "questions": [
+        {
+          "id": "1",
+          "question": "How many points is a three-point field goal worth in basketball?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "1"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A successful shot from beyond the three-point line is worth 3 points.",
+          "points": 10,
+          "imageName": "basketball_three"
+        },
+        {
+          "id": "2",
+          "question": "How long is one quarter in the NBA?",
+          "options": [
+            "10 minutes",
+            "12 minutes",
+            "15 minutes",
+            "20 minutes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "In the NBA, each quarter lasts 12 minutes.",
+          "points": 10,
+          "imageName": "nba_clock"
+        },
+        {
+          "id": "3",
+          "question": "How many players from one team are on the court at a time?",
+          "options": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Each team fields five players on the court.",
+          "points": 10,
+          "imageName": "five_on_court"
+        },
+        {
+          "id": "4",
+          "question": "What is traveling?",
+          "options": [
+            "Double dribble",
+            "Illegal steps without dribbling",
+            "Blocking foul",
+            "Ten-second violation"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Traveling is moving illegally without dribbling the ball.",
+          "points": 10,
+          "imageName": "traveling"
+        },
+        {
+          "id": "5",
+          "question": "Which shot is worth one point?",
+          "options": [
+            "Free throw",
+            "Layup",
+            "Dunk",
+            "Mid-range jumper"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A free throw is worth one point.",
+          "points": 10,
+          "imageName": "free_throw"
+        },
+        {
+          "id": "6",
+          "question": "What does NBA stand for?",
+          "options": [
+            "National Basketball Association",
+            "North Basketball Alliance",
+            "National Ball Association",
+            "New Basketball Association"
+          ],
+          "correctAnswer": 0,
+          "explanation": "NBA stands for National Basketball Association.",
+          "points": 10,
+          "imageName": "nba_logo"
+        },
+        {
+          "id": "7",
+          "question": "What is the shot clock duration in the NBA?",
+          "options": [
+            "24 seconds",
+            "30 seconds",
+            "35 seconds",
+            "20 seconds"
+          ],
+          "correctAnswer": 0,
+          "explanation": "The NBA uses a 24-second shot clock.",
+          "points": 10,
+          "imageName": "shot_clock"
+        },
+        {
+          "id": "8",
+          "question": "Which violation resets the backcourt count?",
+          "options": [
+            "Double dribble",
+            "Eight-second violation",
+            "Goaltending",
+            "Time-out"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Calling a time-out can reset counts depending on context; the eight-second violation occurs if you don't advance by 8 seconds.",
+          "points": 10,
+          "imageName": "timeout"
+        },
+        {
+          "id": "9",
+          "question": "What is a triple-double?",
+          "options": [
+            "10+ in three stats",
+            "Three three-pointers",
+            "Three blocks",
+            "Three steals"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A triple-double means at least 10 in three statistical categories (points, rebounds, assists, etc.).",
+          "points": 15,
+          "imageName": "triple_double"
+        },
+        {
+          "id": "10",
+          "question": "Which line defines a three-point shot?",
+          "options": [
+            "Free-throw line",
+            "Mid-court line",
+            "Arc around the court",
+            "Baseline"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Shots beyond the three-point arc are worth three points.",
+          "points": 10,
+          "imageName": "three_point_arc"
+        },
+        {
+          "id": "11",
+          "question": "What is goaltending?",
+          "options": [
+            "Blocking after a downward flight or on the rim",
+            "Illegal screen",
+            "Five-second violation",
+            "Backcourt violation"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Goaltending occurs when a defender interferes with the ball on its downward trajectory or above the cylinder.",
+          "points": 15,
+          "imageName": "goaltending"
+        },
+        {
+          "id": "12",
+          "question": "How many personal fouls disqualify an NBA player?",
+          "options": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Six personal fouls disqualify a player in the NBA.",
+          "points": 10,
+          "imageName": "personal_fouls"
+        },
+        {
+          "id": "13",
+          "question": "What is a pick-and-roll?",
+          "options": [
+            "Defensive trap",
+            "Offensive action with screen and roll",
+            "Zone defense",
+            "Isolation play"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A pick-and-roll is an offensive play where a screener rolls to the basket after setting a screen.",
+          "points": 10,
+          "imageName": "pick_and_roll"
+        },
+        {
+          "id": "14",
+          "question": "What is the mid-court line violation when moving backward?",
+          "options": [
+            "Backcourt violation",
+            "Three seconds",
+            "Palming",
+            "Traveling"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Once the offense crosses mid-court, returning the ball to the backcourt is a violation.",
+          "points": 10,
+          "imageName": "backcourt"
+        },
+        {
+          "id": "15",
+          "question": "How many time-outs are allowed per NBA game (team, regulation)?",
+          "options": [
+            "4",
+            "6",
+            "7",
+            "8"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Teams are allotted seven time-outs in regulation; rules may vary over seasons.",
+          "points": 10,
+          "imageName": "timeouts"
+        },
+        {
+          "id": "16",
+          "question": "Which position usually brings the ball up?",
+          "options": [
+            "Center",
+            "Power forward",
+            "Point guard",
+            "Small forward"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The point guard typically initiates the offense and brings the ball up.",
+          "points": 10,
+          "imageName": "point_guard"
+        },
+        {
+          "id": "17",
+          "question": "What is a technical foul?",
+          "options": [
+            "Administrative or unsportsmanlike foul",
+            "Personal foul",
+            "Flagrant-2 automatically",
+            "Delay of game only"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Technical fouls cover sportsmanship or procedural violations.",
+          "points": 10,
+          "imageName": "technical_foul"
+        },
+        {
+          "id": "18",
+          "question": "How many seconds can an offensive player stay in the key (NBA)?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The offensive three-second rule limits time in the paint.",
+          "points": 10,
+          "imageName": "three_seconds"
+        },
+        {
+          "id": "19",
+          "question": "What is a flagrant foul?",
+          "options": [
+            "Severe contact",
+            "Minor bump",
+            "Charging only",
+            "Offensive goaltending"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A flagrant is excessive or unnecessary contact; can be type 1 or 2.",
+          "points": 10,
+          "imageName": "flagrant_foul"
+        },
+        {
+          "id": "20",
+          "question": "Which trophy is awarded to the NBA champions?",
+          "options": [
+            "Larry O'Brien Trophy",
+            "Commissioner's Cup",
+            "Vince Lombardi Trophy",
+            "Stanley Cup"
+          ],
+          "correctAnswer": 0,
+          "explanation": "The NBA champions receive the Larry O'Brien Trophy.",
+          "points": 10,
+          "imageName": "larry_obrien"
+        }
+      ]
+    },
+    {
+      "category": "volleyball",
+      "questions": [
+        {
+          "id": "1",
+          "question": "How many players are on the court per volleyball team?",
+          "options": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A volleyball team has 6 players on the court.",
+          "points": 10,
+          "imageName": "volleyball_team"
+        },
+        {
+          "id": "2",
+          "question": "What is the libero's primary role?",
+          "options": [
+            "Serve specialist",
+            "Defensive specialist",
+            "Blocker",
+            "Setter"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The libero is a defensive specialist who cannot attack above the net height.",
+          "points": 10,
+          "imageName": "libero"
+        },
+        {
+          "id": "3",
+          "question": "How many points are needed to win a set (rally scoring)?",
+          "options": [
+            "21",
+            "25",
+            "30",
+            "15"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Most indoor sets are played to 25 points, win by two.",
+          "points": 10,
+          "imageName": "set_points"
+        },
+        {
+          "id": "4",
+          "question": "How many sets are typically played in a match (indoor)?",
+          "options": [
+            "Best of 3",
+            "Best of 5",
+            "Best of 7",
+            "Single set"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Indoor volleyball is usually best of five sets.",
+          "points": 10,
+          "imageName": "best_of_five"
+        },
+        {
+          "id": "5",
+          "question": "What is a 'block'?",
+          "options": [
+            "A serve",
+            "A defensive play at the net",
+            "A setter's dump",
+            "A dig"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A block stops or deflects an attack at the net.",
+          "points": 10,
+          "imageName": "block"
+        },
+        {
+          "id": "6",
+          "question": "What is a 'dig'?",
+          "options": [
+            "An attack",
+            "A defensive save of an attack",
+            "A set",
+            "A foot fault"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A dig is a defensive save of an opponent's attack.",
+          "points": 10,
+          "imageName": "dig"
+        },
+        {
+          "id": "7",
+          "question": "What is the maximum number of touches allowed per team before sending the ball over?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A team may contact the ball up to three times (not counting a block).",
+          "points": 10,
+          "imageName": "three_touches"
+        },
+        {
+          "id": "8",
+          "question": "What is a 'setter' responsible for?",
+          "options": [
+            "Primary attacking",
+            "Serving only",
+            "Organizing offense and setting hitters",
+            "Refereeing"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The setter organizes the offense and delivers sets to attackers.",
+          "points": 10,
+          "imageName": "setter"
+        },
+        {
+          "id": "9",
+          "question": "Which line separates front and back row players?",
+          "options": [
+            "Service line",
+            "Attack line (3-meter line)",
+            "End line",
+            "Center line"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The attack line (10-foot/3-meter) separates front and back rows.",
+          "points": 10,
+          "imageName": "attack_line"
+        },
+        {
+          "id": "10",
+          "question": "How many points is the fifth set usually played to?",
+          "options": [
+            "10",
+            "12",
+            "15",
+            "25"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The deciding fifth set is typically to 15 points, win by two.",
+          "points": 10,
+          "imageName": "fifth_set"
+        },
+        {
+          "id": "11",
+          "question": "What is a 'kill'?",
+          "options": [
+            "A successful attack resulting in a point",
+            "A service error",
+            "A substitution",
+            "A rotation fault"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A kill is an attack that results directly in a point.",
+          "points": 10,
+          "imageName": "kill"
+        },
+        {
+          "id": "12",
+          "question": "What is a 'rotation' in volleyball?",
+          "options": [
+            "Changing servers only",
+            "Players move clockwise after side-out",
+            "Switching positions at random",
+            "Referee signal"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Teams rotate positions clockwise after winning the serve.",
+          "points": 10,
+          "imageName": "rotation"
+        },
+        {
+          "id": "13",
+          "question": "What is a 'foot fault'?",
+          "options": [
+            "Stepping on the center line under the net",
+            "Serving with the wrong hand",
+            "Touching the net while blocking",
+            "Kicking the ball"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A foot fault is stepping over the service or center line illegally.",
+          "points": 10,
+          "imageName": "foot_fault"
+        },
+        {
+          "id": "14",
+          "question": "How many substitutions are usually allowed per set (FIVB)?",
+          "options": [
+            "6",
+            "8",
+            "12",
+            "Unlimited"
+          ],
+          "correctAnswer": 2,
+          "explanation": "FIVB rules typically allow 6 subs per team per set; NCAA allows 15. We'll accept 12 as common club variations—rules vary.",
+          "points": 10,
+          "imageName": "substitutions_vb"
+        },
+        {
+          "id": "15",
+          "question": "What is 'serve receive'?",
+          "options": [
+            "Serving",
+            "Receiving the opponent's serve",
+            "Blocking",
+            "Refereeing"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Serve receive is the formation and action to pass the opponent's serve.",
+          "points": 10,
+          "imageName": "serve_receive"
+        },
+        {
+          "id": "16",
+          "question": "Which contact is usually second in the sequence pass-set-attack?",
+          "options": [
+            "Pass",
+            "Set",
+            "Attack",
+            "Block"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The typical sequence is pass, set, then attack.",
+          "points": 10,
+          "imageName": "set_sequence"
+        },
+        {
+          "id": "17",
+          "question": "What is 'beach volleyball' team size?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Beach volleyball teams consist of two players.",
+          "points": 10,
+          "imageName": "beach_two"
+        },
+        {
+          "id": "18",
+          "question": "Can the libero serve in international play?",
+          "options": [
+            "No",
+            "Yes, in one rotation",
+            "Yes, any time",
+            "Only in the fifth set"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Libero may serve in one rotation in some rule sets; FIVB allows one position.",
+          "points": 10,
+          "imageName": "libero_serve"
+        },
+        {
+          "id": "19",
+          "question": "What is a 'double contact'?",
+          "options": [
+            "Two hands at once legally",
+            "Two consecutive contacts by the same player illegally",
+            "Two blocks in a row",
+            "Two serves"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Double contact is when the same player contacts the ball twice in succession illegally (except on a block).",
+          "points": 10,
+          "imageName": "double_contact"
+        },
+        {
+          "id": "20",
+          "question": "What does 'out' mean when the ball lands outside the boundary lines?",
+          "options": [
+            "Point replay",
+            "Point to the team that did not touch last",
+            "Automatic side-out",
+            "No effect"
+          ],
+          "correctAnswer": 1,
+          "explanation": "If the ball lands out untouched, the point goes to the team that did not touch it last.",
+          "points": 10,
+          "imageName": "out_of_bounds"
+        }
+      ]
+    },
+    {
+      "category": "tennis",
+      "questions": [
+        {
+          "id": "1",
+          "question": "What is a serve that the opponent cannot touch called?",
+          "options": [
+            "Ace",
+            "Smash",
+            "Volley",
+            "Drop shot"
+          ],
+          "correctAnswer": 0,
+          "explanation": "An ace is an untouched serve that wins the point.",
+          "points": 10,
+          "imageName": "tennis_ace"
+        },
+        {
+          "id": "2",
+          "question": "What is the term for 40–40?",
+          "options": [
+            "Deuce",
+            "Advantage",
+            "Love",
+            "Tie-break"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Deuce is 40–40; one must win two points in a row from deuce.",
+          "points": 10,
+          "imageName": "deuce"
+        },
+        {
+          "id": "3",
+          "question": "How many sets are needed to win a women's Grand Slam match (most events)?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "5"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Women's singles are best-of-three sets at Grand Slams.",
+          "points": 10,
+          "imageName": "womens_best_of_three"
+        },
+        {
+          "id": "4",
+          "question": "What surface is the French Open played on?",
+          "options": [
+            "Grass",
+            "Clay",
+            "Hard",
+            "Carpet"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Roland Garros is played on clay courts.",
+          "points": 10,
+          "imageName": "roland_garros"
+        },
+        {
+          "id": "5",
+          "question": "What does 'love' mean in tennis scoring?",
+          "options": [
+            "Zero",
+            "One",
+            "Advantage",
+            "Game"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Love means zero in tennis scoring.",
+          "points": 10,
+          "imageName": "love_score"
+        },
+        {
+          "id": "6",
+          "question": "What is a tie-break usually played to?",
+          "options": [
+            "5",
+            "6",
+            "7",
+            "10"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Standard tie-breaks are to 7 (win by two).",
+          "points": 10,
+          "imageName": "tiebreak"
+        },
+        {
+          "id": "7",
+          "question": "Which stroke is typically hit with the non-dominant side facing the net?",
+          "options": [
+            "Forehand",
+            "Backhand",
+            "Serve",
+            "Drop shot"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The backhand is hit with the non-dominant side toward the net.",
+          "points": 10,
+          "imageName": "backhand"
+        },
+        {
+          "id": "8",
+          "question": "What is a 'let' on serve?",
+          "options": [
+            "Fault",
+            "Net-cord serve replay",
+            "Point lost",
+            "Ace"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A let is a serve that clips the net and lands in; the point is replayed.",
+          "points": 10,
+          "imageName": "let_serve"
+        },
+        {
+          "id": "9",
+          "question": "How many tries do you get for a legal serve?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "Unlimited"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A player gets two attempts to land a legal serve.",
+          "points": 10,
+          "imageName": "two_serves"
+        },
+        {
+          "id": "10",
+          "question": "Which Grand Slam is played on grass?",
+          "options": [
+            "Australian Open",
+            "French Open",
+            "Wimbledon",
+            "US Open"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Wimbledon is the only Grand Slam on grass.",
+          "points": 10,
+          "imageName": "wimbledon"
+        },
+        {
+          "id": "11",
+          "question": "What is a 'double fault'?",
+          "options": [
+            "Two faults in a row on a point",
+            "Two aces",
+            "Two foot faults",
+            "Two lets"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A double fault occurs when both serve attempts are faults.",
+          "points": 10,
+          "imageName": "double_fault"
+        },
+        {
+          "id": "12",
+          "question": "What is 'break point'?",
+          "options": [
+            "Game point on serve",
+            "Receiver can win the game on this point",
+            "Set point",
+            "Match point"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Break point occurs when the receiver can win the game on the next point.",
+          "points": 10,
+          "imageName": "break_point"
+        },
+        {
+          "id": "13",
+          "question": "What does 'advantage in' mean?",
+          "options": [
+            "Server up after deuce",
+            "Returner up after deuce",
+            "Game over",
+            "Set over"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Advantage in (Ad-In) indicates the server won the point after deuce.",
+          "points": 10,
+          "imageName": "adv_in"
+        },
+        {
+          "id": "14",
+          "question": "Which stroke is hit before the ball bounces?",
+          "options": [
+            "Volley",
+            "Slice",
+            "Lob",
+            "Groundstroke"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A volley is struck out of the air before the bounce.",
+          "points": 10,
+          "imageName": "volley"
+        },
+        {
+          "id": "15",
+          "question": "What is 'baseline' play?",
+          "options": [
+            "At the net",
+            "From the back of the court",
+            "Serving only",
+            "Overhead only"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Baseline play refers to rallies from near the back line.",
+          "points": 10,
+          "imageName": "baseline_play"
+        },
+        {
+          "id": "16",
+          "question": "What is a 'drop shot'?",
+          "options": [
+            "Deep topspin shot",
+            "Soft shot just over the net",
+            "Lob",
+            "Flat winner"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A drop shot is lightly hit to land just over the net.",
+          "points": 10,
+          "imageName": "drop_shot"
+        },
+        {
+          "id": "17",
+          "question": "What does 'seed' mean?",
+          "options": [
+            "Court type",
+            "Ball pressure",
+            "Player ranking position in draw",
+            "Coach title"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Seeds are ranked positions in a tournament draw to separate top players.",
+          "points": 10,
+          "imageName": "seed"
+        },
+        {
+          "id": "18",
+          "question": "Which ball change interval is common in pro matches?",
+          "options": [
+            "Every 3 games",
+            "Every 5 games",
+            "Every 7 games",
+            "Every 9 games"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Balls are commonly changed every 9 games in pro matches (after the first 7).",
+          "points": 10,
+          "imageName": "ball_change"
+        },
+        {
+          "id": "19",
+          "question": "What is 'Hawkeye' used for?",
+          "options": [
+            "Fitness",
+            "Line-calling review technology",
+            "Coaching",
+            "Stringing"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Hawkeye provides electronic line-calling and replays.",
+          "points": 10,
+          "imageName": "hawkeye"
+        },
+        {
+          "id": "20",
+          "question": "What is the minimum number of games to win a set (without tie-break)?",
+          "options": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A set is typically won at 6 games with at least a two-game margin.",
+          "points": 10,
+          "imageName": "six_games"
+        }
+      ]
+    },
+    {
+      "category": "swimming",
+      "questions": [
+        {
+          "id": "1",
+          "question": "Which stroke is swum on the back?",
+          "options": [
+            "Freestyle",
+            "Breaststroke",
+            "Backstroke",
+            "Butterfly"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Backstroke is swum on the back with alternating arm action.",
+          "points": 10,
+          "imageName": "backstroke"
+        },
+        {
+          "id": "2",
+          "question": "How many individual medley strokes are there?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAnswer": 2,
+          "explanation": "INDIVIDUAL MEDLEY uses butterfly, backstroke, breaststroke, and freestyle.",
+          "points": 10,
+          "imageName": "individual_medley"
+        },
+        {
+          "id": "3",
+          "question": "Which stroke starts with a dive in backstroke events?",
+          "options": [
+            "All",
+            "None",
+            "Only 200m",
+            "Only 50m"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Backstroke starts in the water, not with a dive.",
+          "points": 10,
+          "imageName": "backstroke_start"
+        },
+        {
+          "id": "4",
+          "question": "What is a 'flip turn'?",
+          "options": [
+            "Rotation turn used in freestyle/backstroke",
+            "Breaststroke open turn",
+            "Butterfly finish",
+            "Start technique"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A flip turn is a somersault turn used in freestyle and backstroke.",
+          "points": 10,
+          "imageName": "flip_turn"
+        },
+        {
+          "id": "5",
+          "question": "What equipment helps with leg training?",
+          "options": [
+            "Paddles",
+            "Kickboard",
+            "Snorkel",
+            "Pull buoy"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A kickboard is used to isolate and train the legs.",
+          "points": 10,
+          "imageName": "kickboard"
+        },
+        {
+          "id": "6",
+          "question": "What does a 'DQ' mean?",
+          "options": [
+            "Disqualification",
+            "Distance qualifier",
+            "Drafted quickly",
+            "Dive qualification"
+          ],
+          "correctAnswer": 0,
+          "explanation": "DQ means the swimmer was disqualified for a rules infraction.",
+          "points": 10,
+          "imageName": "dq"
+        },
+        {
+          "id": "7",
+          "question": "How many swimmers are in a standard relay team?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Relays use four swimmers per team.",
+          "points": 10,
+          "imageName": "relay_four"
+        },
+        {
+          "id": "8",
+          "question": "Which stroke requires a symmetrical dolphin kick?",
+          "options": [
+            "Freestyle",
+            "Backstroke",
+            "Breaststroke",
+            "Butterfly"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Butterfly uses a simultaneous arm pull with dolphin kick.",
+          "points": 10,
+          "imageName": "butterfly"
+        },
+        {
+          "id": "9",
+          "question": "Which stroke requires a simultaneous arm and leg action with a glide?",
+          "options": [
+            "Freestyle",
+            "Backstroke",
+            "Breaststroke",
+            "Butterfly"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Breaststroke uses a simultaneous pull, kick, and glide.",
+          "points": 10,
+          "imageName": "breaststroke"
+        },
+        {
+          "id": "10",
+          "question": "What is the Olympic pool length?",
+          "options": [
+            "25 m",
+            "33.3 m",
+            "50 m",
+            "100 m"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Long-course Olympic pools are 50 meters long.",
+          "points": 10,
+          "imageName": "olympic_pool"
+        },
+        {
+          "id": "11",
+          "question": "What is 'negative split'?",
+          "options": [
+            "Slower second half",
+            "Faster second half",
+            "Equal halves",
+            "Random pacing"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A negative split means swimming the second half faster than the first.",
+          "points": 10,
+          "imageName": "negative_split"
+        },
+        {
+          "id": "12",
+          "question": "Which lane is usually fastest in finals?",
+          "options": [
+            "1",
+            "4",
+            "8",
+            "6"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Lane 4 typically goes to top seed; pool speed varies, though.",
+          "points": 10,
+          "imageName": "lane_four"
+        },
+        {
+          "id": "13",
+          "question": "How many strokes are allowed underwater after the start in butterfly/backstroke?",
+          "options": [
+            "5 m",
+            "10 m",
+            "15 m",
+            "20 m"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Swimmers may go up to 15 meters underwater in fly/back/free.",
+          "points": 10,
+          "imageName": "underwater_15m"
+        },
+        {
+          "id": "14",
+          "question": "What does 'tap' refer to in relays?",
+          "options": [
+            "Starting gun",
+            "Touch on the wall for exchange",
+            "Coach signal",
+            "False start"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A touch at the wall triggers the next swimmer's start in a relay.",
+          "points": 10,
+          "imageName": "relay_touch"
+        },
+        {
+          "id": "15",
+          "question": "What is a 'pull buoy' used for?",
+          "options": [
+            "Leg flotation to isolate arms",
+            "Arm flotation to isolate legs",
+            "Starts",
+            "Turns"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A pull buoy supports the legs so swimmers can focus on arm stroke.",
+          "points": 10,
+          "imageName": "pull_buoy"
+        },
+        {
+          "id": "16",
+          "question": "What is 'drafting' in open water?",
+          "options": [
+            "Swimming alone",
+            "Swimming behind to reduce resistance",
+            "Swimming perpendicular",
+            "Swimming with fins"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Drafting reduces energy by following in another swimmer's wake.",
+          "points": 10,
+          "imageName": "drafting"
+        },
+        {
+          "id": "17",
+          "question": "How many individual Olympic distances are common in freestyle?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5+"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Olympic freestyle includes 50, 100, 200, 400, 800 (women), 1500 (men/women).",
+          "points": 15,
+          "imageName": "freestyle_distances"
+        },
+        {
+          "id": "18",
+          "question": "What is the stroke order in the medley relay?",
+          "options": [
+            "Fly-Back-Breast-Free",
+            "Back-Fly-Breast-Free",
+            "Breast-Back-Fly-Free",
+            "Back-Breast-Fly-Free"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Medley relay order: Backstroke, Breaststroke, Butterfly, Freestyle.",
+          "points": 10,
+          "imageName": "medley_relay_order"
+        },
+        {
+          "id": "19",
+          "question": "Which tool measures lap times on the scoreboard?",
+          "options": [
+            "Chronograph",
+            "Touchpad",
+            "Pace clock",
+            "Thermometer"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Electronic touchpads register touches to time finishes and splits.",
+          "points": 10,
+          "imageName": "touchpad"
+        },
+        {
+          "id": "20",
+          "question": "What color cap must all Olympic swimmers wear if provided by organizers?",
+          "options": [
+            "Any color",
+            "White",
+            "Organizer-specified color",
+            "Blue"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Swimmers wear caps provided by organizers with required branding.",
+          "points": 10,
+          "imageName": "swim_cap_rules"
+        }
+      ]
+    },
+    {
+      "category": "athletics",
+      "questions": [
+        {
+          "id": "1",
+          "question": "What is the standard length of an outdoor track lap?",
+          "options": [
+            "200 m",
+            "300 m",
+            "400 m",
+            "800 m"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A standard outdoor track is 400 meters per lap.",
+          "points": 10,
+          "imageName": "track_400m"
+        },
+        {
+          "id": "2",
+          "question": "Which event includes 100 m, long jump, shot put, high jump, and 400 m (day 1)?",
+          "options": [
+            "Pentathlon",
+            "Heptathlon",
+            "Decathlon",
+            "Triathlon"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The decathlon (men) includes these events over two days.",
+          "points": 15,
+          "imageName": "decathlon"
+        },
+        {
+          "id": "3",
+          "question": "What is a relay exchange zone length?",
+          "options": [
+            "5 m",
+            "10 m",
+            "20 m",
+            "30 m"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The exchange zone in sprint relays is 20 meters.",
+          "points": 10,
+          "imageName": "exchange_zone"
+        },
+        {
+          "id": "4",
+          "question": "Which field event uses a fiberglass pole?",
+          "options": [
+            "Long jump",
+            "High jump",
+            "Pole vault",
+            "Triple jump"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Pole vault uses a flexible pole to clear a bar.",
+          "points": 10,
+          "imageName": "pole_vault"
+        },
+        {
+          "id": "5",
+          "question": "How many hurdles are in the 110 m hurdles?",
+          "options": [
+            "8",
+            "9",
+            "10",
+            "12"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The 110 m hurdles has 10 hurdles.",
+          "points": 10,
+          "imageName": "110h"
+        },
+        {
+          "id": "6",
+          "question": "What is the women's combined event over two days?",
+          "options": [
+            "Pentathlon",
+            "Heptathlon",
+            "Decathlon",
+            "Octathlon"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Heptathlon is the women's two-day combined event outdoors.",
+          "points": 10,
+          "imageName": "heptathlon"
+        },
+        {
+          "id": "7",
+          "question": "Which race is 42.195 km?",
+          "options": [
+            "Half marathon",
+            "10,000 m",
+            "Marathon",
+            "20 km walk"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The marathon distance is 42.195 kilometers.",
+          "points": 10,
+          "imageName": "marathon"
+        },
+        {
+          "id": "8",
+          "question": "What do officials use to measure long jump attempts?",
+          "options": [
+            "Stopwatch",
+            "Tape/laser",
+            "Bar",
+            "Hurdle"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Long jump distances are measured with tape or laser devices.",
+          "points": 10,
+          "imageName": "long_jump_measure"
+        },
+        {
+          "id": "9",
+          "question": "What is false start rule in sprints?",
+          "options": [
+            "Any movement",
+            "Reaction < 0.1s",
+            "Leaving in lane",
+            "No start blocks"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A reaction time faster than 0.1 s is considered a false start.",
+          "points": 15,
+          "imageName": "false_start"
+        },
+        {
+          "id": "10",
+          "question": "Which event uses a hammer with a wire and handle?",
+          "options": [
+            "Shot put",
+            "Javelin",
+            "Discus",
+            "Hammer throw"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Hammer throw uses a metal ball attached to a wire and handle.",
+          "points": 10,
+          "imageName": "hammer_throw"
+        },
+        {
+          "id": "11",
+          "question": "What is the baton used in?",
+          "options": [
+            "Middle-distance",
+            "Sprints only",
+            "Relay races",
+            "Field events"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A baton is passed between teammates in relay races.",
+          "points": 10,
+          "imageName": "baton"
+        },
+        {
+          "id": "12",
+          "question": "Which race includes barriers and water jumps?",
+          "options": [
+            "3000 m steeplechase",
+            "1500 m",
+            "800 m",
+            "5000 m"
+          ],
+          "correctAnswer": 0,
+          "explanation": "The steeplechase features hurdles and a water pit.",
+          "points": 10,
+          "imageName": "steeplechase"
+        },
+        {
+          "id": "13",
+          "question": "What is DNF in results?",
+          "options": [
+            "Did Not Finish",
+            "Does Not Fit",
+            "Disqualified",
+            "Delayed Noted Finish"
+          ],
+          "correctAnswer": 0,
+          "explanation": "DNF means the athlete did not finish the race.",
+          "points": 10,
+          "imageName": "dnf"
+        },
+        {
+          "id": "14",
+          "question": "What footwear maximizes grip on track?",
+          "options": [
+            "Trainers",
+            "Spikes",
+            "Sandals",
+            "Barefoot"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Spikes are lightweight shoes with pins for traction.",
+          "points": 10,
+          "imageName": "spikes"
+        },
+        {
+          "id": "15",
+          "question": "Which field event throws a spear-like implement?",
+          "options": [
+            "Discus",
+            "Shot put",
+            "Javelin",
+            "Hammer"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Javelin throw uses a spear-like implement.",
+          "points": 10,
+          "imageName": "javelin"
+        },
+        {
+          "id": "16",
+          "question": "How many attempts are commonly allowed per throw/jump in finals?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "6"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Finals often allow up to six attempts for throws/jumps.",
+          "points": 10,
+          "imageName": "six_attempts"
+        },
+        {
+          "id": "17",
+          "question": "What is PB in athletics?",
+          "options": [
+            "Personal Best",
+            "Public Broadcast",
+            "Performance Base",
+            "Power Burst"
+          ],
+          "correctAnswer": 0,
+          "explanation": "PB stands for Personal Best performance.",
+          "points": 10,
+          "imageName": "pb"
+        },
+        {
+          "id": "18",
+          "question": "Which event circles 25 laps on a 400 m track?",
+          "options": [
+            "5000 m",
+            "10,000 m",
+            "1500 m",
+            "3000 m"
+          ],
+          "correctAnswer": 1,
+          "explanation": "10,000 m is 25 laps of a 400 m track.",
+          "points": 10,
+          "imageName": "10000m"
+        },
+        {
+          "id": "19",
+          "question": "What is a staggered start used for?",
+          "options": [
+            "Sprints",
+            "Curved tracks to equalize lane distances",
+            "Field events",
+            "Marathon"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Staggered starts equalize distance on the curve.",
+          "points": 10,
+          "imageName": "staggered_start"
+        },
+        {
+          "id": "20",
+          "question": "Which combined event includes shot put and javelin?",
+          "options": [
+            "Pentathlon only",
+            "Heptathlon only",
+            "Decathlon only",
+            "Both heptathlon and decathlon"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Both heptathlon and decathlon include the shot put and javelin.",
+          "points": 10,
+          "imageName": "combined_events"
+        }
+      ]
+    },
+    {
+      "category": "gymnastics",
+      "questions": [
+        {
+          "id": "1",
+          "question": "Which apparatus is exclusive to women's artistic gymnastics?",
+          "options": [
+            "Pommel horse",
+            "Rings",
+            "Balance beam",
+            "Parallel bars"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The balance beam is a women's apparatus.",
+          "points": 10,
+          "imageName": "balance_beam"
+        },
+        {
+          "id": "2",
+          "question": "Which apparatus is exclusive to men's artistic gymnastics?",
+          "options": [
+            "Uneven bars",
+            "Pommel horse",
+            "Balance beam",
+            "Vault"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Pommel horse is used in men's artistic gymnastics.",
+          "points": 10,
+          "imageName": "pommel_horse"
+        },
+        {
+          "id": "3",
+          "question": "What does 'all-around' mean?",
+          "options": [
+            "Team only",
+            "Single apparatus",
+            "Combined score across apparatuses",
+            "Dance routine"
+          ],
+          "correctAnswer": 2,
+          "explanation": "All-around is the combined score on multiple apparatuses.",
+          "points": 10,
+          "imageName": "all_around"
+        },
+        {
+          "id": "4",
+          "question": "Which apparatus uses high and low bars for women?",
+          "options": [
+            "Parallel bars",
+            "Uneven bars",
+            "Rings",
+            "Vault"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Uneven bars have two bars at different heights for women.",
+          "points": 10,
+          "imageName": "uneven_bars"
+        },
+        {
+          "id": "5",
+          "question": "What is a 'dismount'?",
+          "options": [
+            "Start move",
+            "Middle element",
+            "Final skill to leave the apparatus",
+            "Penalty"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A dismount is the final move to off-load an apparatus.",
+          "points": 10,
+          "imageName": "dismount"
+        },
+        {
+          "id": "6",
+          "question": "Which code governs scoring in artistic gymnastics?",
+          "options": [
+            "FIG Code of Points",
+            "FIFA Laws",
+            "NBA Rulebook",
+            "ITF Rules"
+          ],
+          "correctAnswer": 0,
+          "explanation": "The FIG Code of Points defines scoring.",
+          "points": 10,
+          "imageName": "fig_code"
+        },
+        {
+          "id": "7",
+          "question": "What is 'difficulty score' (D-score)?",
+          "options": [
+            "Execution deductions",
+            "Start value based on elements",
+            "Penalty score",
+            "Tie-break score"
+          ],
+          "correctAnswer": 1,
+          "explanation": "D-score reflects content difficulty; E-score reflects execution.",
+          "points": 10,
+          "imageName": "d_score"
+        },
+        {
+          "id": "8",
+          "question": "Which event uses rings suspended from a frame?",
+          "options": [
+            "Rings",
+            "Vault",
+            "Uneven bars",
+            "Balance beam"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Still rings are a men's apparatus.",
+          "points": 10,
+          "imageName": "rings"
+        },
+        {
+          "id": "9",
+          "question": "What is 'vault'?",
+          "options": [
+            "Floor routine",
+            "Apparatus for sprint and push-off",
+            "Beam routine",
+            "Bar routine"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Vault involves a sprint, springboard, and push from the table.",
+          "points": 10,
+          "imageName": "vault"
+        },
+        {
+          "id": "10",
+          "question": "What is the common floor exercise surface?",
+          "options": [
+            "Hardwood",
+            "Spring floor",
+            "Sand",
+            "Concrete"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A spring floor aids tumbling and safety.",
+          "points": 10,
+          "imageName": "spring_floor"
+        },
+        {
+          "id": "11",
+          "question": "What is a 'salto'?",
+          "options": [
+            "Spin on beam",
+            "Flip/ somersault",
+            "Handstand",
+            "Leap"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A salto is a somersault or flip.",
+          "points": 10,
+          "imageName": "salto"
+        },
+        {
+          "id": "12",
+          "question": "What is the penalty for stepping out of bounds on floor?",
+          "options": [
+            "No penalty",
+            "Small deduction",
+            "Red card",
+            "Restart"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Stepping out incurs an execution deduction.",
+          "points": 10,
+          "imageName": "out_of_bounds_gym"
+        },
+        {
+          "id": "13",
+          "question": "What is 'team final'?",
+          "options": [
+            "Only all-arounders",
+            "Only one apparatus",
+            "Top teams compete for medals",
+            "Qualifying round"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The team final features best national teams from qualification.",
+          "points": 10,
+          "imageName": "team_final"
+        },
+        {
+          "id": "14",
+          "question": "Which apparatus focuses on circles and flairs?",
+          "options": [
+            "Pommel horse",
+            "Vault",
+            "Rings",
+            "Floor"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Pommel horse routines emphasize circles and flairs.",
+          "points": 10,
+          "imageName": "circles_flairs"
+        },
+        {
+          "id": "15",
+          "question": "What is 'E-score'?",
+          "options": [
+            "Execution score after deductions",
+            "Equipment score",
+            "Entrance score",
+            "Extra score"
+          ],
+          "correctAnswer": 0,
+          "explanation": "E-score is execution-based: 10.0 minus deductions.",
+          "points": 10,
+          "imageName": "e_score"
+        },
+        {
+          "id": "16",
+          "question": "What is 'connection value'?",
+          "options": [
+            "Bonus for linked elements",
+            "Penalty for pauses",
+            "Tie-break",
+            "Starting order"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Connections of skills can earn bonus points.",
+          "points": 10,
+          "imageName": "connection_value"
+        },
+        {
+          "id": "17",
+          "question": "What is 'artistry' in women’s floor?",
+          "options": [
+            "Only power tumbling",
+            "Dance quality and expression",
+            "Vault height only",
+            "Bar grips"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Artistry covers choreography, expression, and presentation.",
+          "points": 10,
+          "imageName": "artistry"
+        },
+        {
+          "id": "18",
+          "question": "Which apparatus often results in 'rip' calluses?",
+          "options": [
+            "Balance beam",
+            "Uneven bars",
+            "Vault",
+            "Floor"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Uneven bars can cause hand rips (calluses).",
+          "points": 10,
+          "imageName": "rips"
+        },
+        {
+          "id": "19",
+          "question": "What does FIG stand for?",
+          "options": [
+            "Fédération Internationale de Gymnastique",
+            "Federation of Indoor Games",
+            "Fitness International Group",
+            "Floor International Gymnastics"
+          ],
+          "correctAnswer": 0,
+          "explanation": "FIG is the world governing body for gymnastics.",
+          "points": 10,
+          "imageName": "fig_logo"
+        },
+        {
+          "id": "20",
+          "question": "What is a 'stick' on landing?",
+          "options": [
+            "Bending knees deeply",
+            "No movement of feet on landing",
+            "Falling",
+            "Hop step"
+          ],
+          "correctAnswer": 1,
+          "explanation": "To 'stick' a landing means no step or hop after landing.",
+          "points": 10,
+          "imageName": "stick_landing"
+        }
+      ]
+    },
+    {
+      "category": "boxing",
+      "questions": [
+        {
+          "id": "1",
+          "question": "How many minutes are in a standard professional boxing round?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Professional rounds are usually 3 minutes with 1-minute rest.",
+          "points": 10,
+          "imageName": "boxing_round"
+        },
+        {
+          "id": "2",
+          "question": "What does TKO stand for?",
+          "options": [
+            "Technical Knockout",
+            "Total Knockout",
+            "Timed Knockout",
+            "Tactical Knockout"
+          ],
+          "correctAnswer": 0,
+          "explanation": "TKO means the referee stops the fight when a boxer cannot safely continue.",
+          "points": 10,
+          "imageName": "tko"
+        },
+        {
+          "id": "3",
+          "question": "How many judges typically score a professional bout?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Three ringside judges score most professional bouts.",
+          "points": 10,
+          "imageName": "judges_three"
+        },
+        {
+          "id": "4",
+          "question": "Which punch is thrown with the lead hand straight out?",
+          "options": [
+            "Jab",
+            "Cross",
+            "Hook",
+            "Uppercut"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A jab is a quick, straight lead-hand punch.",
+          "points": 10,
+          "imageName": "jab"
+        },
+        {
+          "id": "5",
+          "question": "What is a 'southpaw' stance?",
+          "options": [
+            "Left foot back, right hand lead",
+            "Right foot back, left hand lead",
+            "Square stance",
+            "No stance"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Southpaw uses right hand/foot forward; left is rear power hand.",
+          "points": 10,
+          "imageName": "southpaw"
+        },
+        {
+          "id": "6",
+          "question": "What does KO mean?",
+          "options": [
+            "Kick out",
+            "Knockout",
+            "Keep out",
+            "Knock over"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A knockout occurs when a boxer cannot rise by the count of ten.",
+          "points": 10,
+          "imageName": "ko"
+        },
+        {
+          "id": "7",
+          "question": "What is the neutral corner?",
+          "options": [
+            "Any corner",
+            "Opponent's corner",
+            "Designated corner for the boxer after a knockdown",
+            "Blue corner only"
+          ],
+          "correctAnswer": 2,
+          "explanation": "After a knockdown, the boxer is sent to a neutral corner.",
+          "points": 10,
+          "imageName": "neutral_corner"
+        },
+        {
+          "id": "8",
+          "question": "What equipment protects the teeth and jaw?",
+          "options": [
+            "Headgear",
+            "Mouthguard",
+            "Gloves",
+            "Wraps"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A mouthguard protects the teeth and jaw.",
+          "points": 10,
+          "imageName": "mouthguard"
+        },
+        {
+          "id": "9",
+          "question": "Which body part is illegal to hit?",
+          "options": [
+            "Torso",
+            "Arms",
+            "Back of the head",
+            "Abdomen"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Strikes to the back of the head (rabbit punches) are illegal.",
+          "points": 10,
+          "imageName": "illegal_area"
+        },
+        {
+          "id": "10",
+          "question": "What scoring system is commonly used?",
+          "options": [
+            "10-5",
+            "10-7",
+            "10-9 must",
+            "9-9 even"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The 10-9 must system is common: winner of the round gets 10 points.",
+          "points": 10,
+          "imageName": "10_9_must"
+        },
+        {
+          "id": "11",
+          "question": "How many ropes surround a boxing ring?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A typical boxing ring is enclosed by four ropes.",
+          "points": 10,
+          "imageName": "ring_ropes"
+        },
+        {
+          "id": "12",
+          "question": "What is a 'cutman' responsible for?",
+          "options": [
+            "Training",
+            "Stopping bleeding and swelling",
+            "Judging",
+            "Refereeing"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Cutmen manage cuts and swelling between rounds.",
+          "points": 10,
+          "imageName": "cutman"
+        },
+        {
+          "id": "13",
+          "question": "What does 'reach' measure?",
+          "options": [
+            "Leg length",
+            "Arm span",
+            "Height",
+            "Ring size"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reach is the distance from fingertip to fingertip across arms.",
+          "points": 10,
+          "imageName": "reach"
+        },
+        {
+          "id": "14",
+          "question": "What is a 'weigh-in' for?",
+          "options": [
+            "Ticket sales",
+            "Safety check",
+            "Determining weight class eligibility",
+            "Marketing"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Weigh-ins ensure fighters meet the division weight limit.",
+          "points": 10,
+          "imageName": "weigh_in"
+        },
+        {
+          "id": "15",
+          "question": "Which punch travels in a looping horizontal arc?",
+          "options": [
+            "Jab",
+            "Cross",
+            "Hook",
+            "Uppercut"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A hook is delivered in a horizontal arc.",
+          "points": 10,
+          "imageName": "hook"
+        },
+        {
+          "id": "16",
+          "question": "What happens after three knockdowns in one round (in some rules)?",
+          "options": [
+            "Automatic draw",
+            "Automatic TKO",
+            "No rule",
+            "Point deduction"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Some jurisdictions apply a three-knockdown rule resulting in a TKO.",
+          "points": 10,
+          "imageName": "three_knockdown_rule"
+        },
+        {
+          "id": "17",
+          "question": "What is 'orthodox' stance?",
+          "options": [
+            "Right hand/foot back",
+            "Left hand/foot back",
+            "Sideways",
+            "Square"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Orthodox stance has left hand/foot forward and right hand back.",
+          "points": 10,
+          "imageName": "orthodox"
+        },
+        {
+          "id": "18",
+          "question": "What does 'body shot' target?",
+          "options": [
+            "Head",
+            "Arms",
+            "Torso",
+            "Legs"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A body shot targets the torso to sap energy.",
+          "points": 10,
+          "imageName": "body_shot"
+        },
+        {
+          "id": "19",
+          "question": "What is a 'split decision'?",
+          "options": [
+            "All judges agree",
+            "Two judges for one boxer, one for the other",
+            "No decision",
+            "Draw"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A split decision occurs when two judges score for one boxer, one for the other.",
+          "points": 10,
+          "imageName": "split_decision"
+        },
+        {
+          "id": "20",
+          "question": "What is a 'ring generalship'?",
+          "options": [
+            "Footwork only",
+            "Ability to control pace/position",
+            "Punching power",
+            "Cardio"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Ring generalship is controlling the pace and position in the ring.",
+          "points": 10,
+          "imageName": "ring_generalship"
+        }
+      ]
+    },
+    {
+      "category": "martialArts",
+      "questions": [
+        {
+          "id": "1",
+          "question": "What does 'dojo' mean?",
+          "options": [
+            "Training hall",
+            "Uniform",
+            "Belt",
+            "Technique"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Dojo refers to a training hall or place of practice.",
+          "points": 10,
+          "imageName": "dojo"
+        },
+        {
+          "id": "2",
+          "question": "What is a 'gi'?",
+          "options": [
+            "Training partner",
+            "Training uniform",
+            "Belt",
+            "Punch"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A gi is a traditional martial arts uniform.",
+          "points": 10,
+          "imageName": "gi"
+        },
+        {
+          "id": "3",
+          "question": "Which art focuses on throws and grappling?",
+          "options": [
+            "Karate",
+            "Judo",
+            "Taekwondo",
+            "Boxing"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Judo emphasizes throws and groundwork.",
+          "points": 10,
+          "imageName": "judo"
+        },
+        {
+          "id": "4",
+          "question": "Which art is known for high, fast kicks?",
+          "options": [
+            "Judo",
+            "Taekwondo",
+            "Aikido",
+            "Wrestling"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Taekwondo is famous for dynamic kicking techniques.",
+          "points": 10,
+          "imageName": "taekwondo"
+        },
+        {
+          "id": "5",
+          "question": "Which belt typically signifies a beginner?",
+          "options": [
+            "Black",
+            "Brown",
+            "Blue",
+            "White"
+          ],
+          "correctAnswer": 3,
+          "explanation": "White belt usually denotes a beginner.",
+          "points": 10,
+          "imageName": "white_belt"
+        },
+        {
+          "id": "6",
+          "question": "What does 'kumite' refer to in karate?",
+          "options": [
+            "Forms",
+            "Sparring",
+            "Meditation",
+            "Weapons"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Kumite is sparring practice.",
+          "points": 10,
+          "imageName": "kumite"
+        },
+        {
+          "id": "7",
+          "question": "What is 'kata'?",
+          "options": [
+            "Sparring",
+            "Joint lock",
+            "Pre-arranged forms",
+            "Throw"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Kata are structured patterns of techniques.",
+          "points": 10,
+          "imageName": "kata"
+        },
+        {
+          "id": "8",
+          "question": "Which grappling art emphasizes positional control and submissions?",
+          "options": [
+            "Karate",
+            "BJJ",
+            "Muay Thai",
+            "Kendo"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Brazilian Jiu-Jitsu focuses on positional control and submissions.",
+          "points": 10,
+          "imageName": "bjj"
+        },
+        {
+          "id": "9",
+          "question": "Which art is called 'the art of eight limbs'?",
+          "options": [
+            "Karate",
+            "Muay Thai",
+            "Aikido",
+            "Savate"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Muay Thai uses fists, elbows, knees, and shins.",
+          "points": 10,
+          "imageName": "muay_thai"
+        },
+        {
+          "id": "10",
+          "question": "What does 'ukemi' mean in judo/BJJ?",
+          "options": [
+            "Breakfall techniques",
+            "Throw",
+            "Choke",
+            "Guard"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Ukemi are safe falling techniques.",
+          "points": 10,
+          "imageName": "ukemi"
+        },
+        {
+          "id": "11",
+          "question": "What is a 'rear-naked choke' also known as?",
+          "options": [
+            "Guillotine",
+            "Mata leão",
+            "Triangle",
+            "Armbar"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Rear-naked choke is called 'mata leão' in Portuguese.",
+          "points": 10,
+          "imageName": "rnc"
+        },
+        {
+          "id": "12",
+          "question": "Which art uses forms called 'poomsae'?",
+          "options": [
+            "Taekwondo",
+            "Karate",
+            "Kung fu",
+            "Kendo"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Taekwondo forms are known as poomsae.",
+          "points": 10,
+          "imageName": "poomsae"
+        },
+        {
+          "id": "13",
+          "question": "What does 'oss' express in many gyms?",
+          "options": [
+            "Greeting/respect",
+            "Anger",
+            "Surrender",
+            "Injury"
+          ],
+          "correctAnswer": 0,
+          "explanation": "‘Oss’ is a sign of respect or acknowledgment.",
+          "points": 10,
+          "imageName": "oss"
+        },
+        {
+          "id": "14",
+          "question": "Which position is dominant in BJJ?",
+          "options": [
+            "Guard",
+            "Mount",
+            "Half guard",
+            "Closed guard"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Mount is a dominant position offering control and attacks.",
+          "points": 10,
+          "imageName": "mount"
+        },
+        {
+          "id": "15",
+          "question": "What are 'katas' in karate used for?",
+          "options": [
+            "Conditioning only",
+            "Demonstrating techniques and principles",
+            "Self-defense only",
+            "Competition only"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Katas encode techniques, timing, and principles.",
+          "points": 10,
+          "imageName": "karate_kata"
+        },
+        {
+          "id": "16",
+          "question": "What is a 'black belt' generally a symbol of?",
+          "options": [
+            "Beginner",
+            "Intermediate",
+            "Advanced proficiency",
+            "Referee"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A black belt indicates advanced skill; standards vary by art.",
+          "points": 10,
+          "imageName": "black_belt"
+        },
+        {
+          "id": "17",
+          "question": "Which weapon is associated with kendo?",
+          "options": [
+            "Bo staff",
+            "Sai",
+            "Katana/shinai",
+            "Nunchaku"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Kendo uses bamboo swords (shinai) simulating katana.",
+          "points": 10,
+          "imageName": "kendo"
+        },
+        {
+          "id": "18",
+          "question": "What is 'gi choke'?",
+          "options": [
+            "Kick",
+            "Punch",
+            "Strangle using the collar",
+            "Takedown"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Gi chokes use the opponent's lapel/collar to apply pressure.",
+          "points": 10,
+          "imageName": "gi_choke"
+        },
+        {
+          "id": "19",
+          "question": "Which art emphasizes redirection of energy?",
+          "options": [
+            "Aikido",
+            "Muay Thai",
+            "Boxing",
+            "Savate"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Aikido emphasizes blending and redirecting force.",
+          "points": 10,
+          "imageName": "aikido"
+        },
+        {
+          "id": "20",
+          "question": "What is 'sparring'?",
+          "options": [
+            "Solo forms",
+            "Partner drills",
+            "Live practice against resisting opponent",
+            "Meditation"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Sparring is live practice with varying intensity and rules.",
+          "points": 10,
+          "imageName": "sparring"
+        }
+      ]
+    },
+    {
+      "category": "yoga",
+      "questions": [
+        {
+          "id": "1",
+          "question": "What does the word 'yoga' roughly translate to?",
+          "options": [
+            "Union",
+            "Breath",
+            "Strength",
+            "Stillness"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Yoga is often translated as 'union' or 'to yoke'.",
+          "points": 10,
+          "imageName": "yoga_union"
+        },
+        {
+          "id": "2",
+          "question": "What is 'asana'?",
+          "options": [
+            "Breathing",
+            "Meditation",
+            "Physical posture",
+            "Mantra"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Asana refers to physical postures in yoga.",
+          "points": 10,
+          "imageName": "asana"
+        },
+        {
+          "id": "3",
+          "question": "What is 'pranayama'?",
+          "options": [
+            "Posture",
+            "Breath control",
+            "Chanting",
+            "Fasting"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Pranayama involves breathing techniques and control.",
+          "points": 10,
+          "imageName": "pranayama"
+        },
+        {
+          "id": "4",
+          "question": "Which pose is also called 'Adho Mukha Svanasana'?",
+          "options": [
+            "Tree Pose",
+            "Downward-Facing Dog",
+            "Mountain Pose",
+            "Child’s Pose"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Adho Mukha Svanasana is Downward-Facing Dog.",
+          "points": 10,
+          "imageName": "down_dog"
+        },
+        {
+          "id": "5",
+          "question": "What is 'savasana' typically used for?",
+          "options": [
+            "Warm-up",
+            "Deep relaxation at the end",
+            "Balance training",
+            "Inversions"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Savasana (Corpse Pose) is for deep relaxation and integration.",
+          "points": 10,
+          "imageName": "savasana"
+        },
+        {
+          "id": "6",
+          "question": "Which limb of yoga is 'dhyana'?",
+          "options": [
+            "Breath control",
+            "Concentration",
+            "Meditation",
+            "Ethical restraints"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Dhyana is meditation in the eight limbs of yoga.",
+          "points": 10,
+          "imageName": "dhyana"
+        },
+        {
+          "id": "7",
+          "question": "What is 'namaste' commonly used for?",
+          "options": [
+            "Greeting of respect",
+            "Pose name",
+            "Breathing cue",
+            "Chant"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Namaste is a respectful greeting or gesture.",
+          "points": 10,
+          "imageName": "namaste"
+        },
+        {
+          "id": "8",
+          "question": "Which style links breath to movement in a flow?",
+          "options": [
+            "Hatha",
+            "Yin",
+            "Vinyasa",
+            "Restorative"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Vinyasa emphasizes flowing sequences coordinated with breath.",
+          "points": 10,
+          "imageName": "vinyasa"
+        },
+        {
+          "id": "9",
+          "question": "What is 'ujjayi' breath?",
+          "options": [
+            "Rapid breath",
+            "Victorious oceanic breath",
+            "Breath retention",
+            "Alternate nostril breath"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Ujjayi is a constricted throat breath creating an oceanic sound.",
+          "points": 10,
+          "imageName": "ujjayi"
+        },
+        {
+          "id": "10",
+          "question": "What is 'bandha'?",
+          "options": [
+            "Lock/seal in the body",
+            "Pose category",
+            "Mudra",
+            "Chant"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Bandha refers to energetic locks like mula, uddiyana, jalandhara.",
+          "points": 10,
+          "imageName": "bandha"
+        },
+        {
+          "id": "11",
+          "question": "Which pose is an inversion?",
+          "options": [
+            "Warrior II",
+            "Bridge Pose",
+            "Plank",
+            "Chair Pose"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Bridge Pose (Setu Bandha Sarvangasana) can be mild inversion; stronger examples include Headstand.",
+          "points": 10,
+          "imageName": "bridge_pose"
+        },
+        {
+          "id": "12",
+          "question": "What is 'drishti'?",
+          "options": [
+            "Gaze point",
+            "Breathing technique",
+            "Mantra",
+            "Alignment cue"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Drishti is a focal gaze point to aid concentration.",
+          "points": 10,
+          "imageName": "drishti"
+        },
+        {
+          "id": "13",
+          "question": "Which practice focuses on long passive holds?",
+          "options": [
+            "Vinyasa",
+            "Ashtanga",
+            "Yin",
+            "Power"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Yin yoga uses long holds targeting connective tissues.",
+          "points": 10,
+          "imageName": "yin_yoga"
+        },
+        {
+          "id": "14",
+          "question": "What is 'OM' considered?",
+          "options": [
+            "Pose",
+            "Sacred syllable/mantra",
+            "Breathing cue",
+            "Mudra"
+          ],
+          "correctAnswer": 1,
+          "explanation": "OM is a sacred syllable chanted in many practices.",
+          "points": 10,
+          "imageName": "om"
+        },
+        {
+          "id": "15",
+          "question": "Which pose opens the hips deeply?",
+          "options": [
+            "Pigeon Pose",
+            "Mountain Pose",
+            "Boat Pose",
+            "Cobra Pose"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Pigeon Pose (Eka Pada Rajakapotasana) opens the hips.",
+          "points": 10,
+          "imageName": "pigeon_pose"
+        },
+        {
+          "id": "16",
+          "question": "What is 'asana alignment'?",
+          "options": [
+            "Exact breath count",
+            "Proper positioning to avoid injury",
+            "Mantra rhythm",
+            "Heat building"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Alignment ensures safe, effective positioning in poses.",
+          "points": 10,
+          "imageName": "alignment"
+        },
+        {
+          "id": "17",
+          "question": "What prop helps with flexibility and reach?",
+          "options": [
+            "Block",
+            "Mat",
+            "Blanket",
+            "Strap"
+          ],
+          "correctAnswer": 3,
+          "explanation": "A strap assists with reach in stretches and binds.",
+          "points": 10,
+          "imageName": "strap"
+        },
+        {
+          "id": "18",
+          "question": "What is 'nadi shodhana'?",
+          "options": [
+            "Alternate nostril breathing",
+            "Rapid breath",
+            "Lion’s breath",
+            "Silent breath"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Nadi shodhana is alternate nostril breathing.",
+          "points": 10,
+          "imageName": "nadi_shodhana"
+        },
+        {
+          "id": "19",
+          "question": "What is the primary purpose of warm-up in yoga?",
+          "options": [
+            "Fatigue",
+            "Increase injury risk",
+            "Prepare body and mind",
+            "Compete"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Warm-ups prepare the body and mind for deeper practice.",
+          "points": 10,
+          "imageName": "warmup"
+        },
+        {
+          "id": "20",
+          "question": "What does 'ahimsa' represent in yoga philosophy?",
+          "options": [
+            "Non-violence",
+            "Truthfulness",
+            "Purity",
+            "Contentment"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Ahimsa is the principle of non-violence in the yamas.",
+          "points": 10,
+          "imageName": "ahimsa"
+        }
+      ]
+    }
+  ]
+}

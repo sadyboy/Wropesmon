@@ -43,7 +43,6 @@ class WorkoutViewModel: ObservableObject {
             startExerciseTimer()
         }
         
-        // Показываем случайный совет
         showRandomTip()
     }
     
@@ -64,7 +63,6 @@ class WorkoutViewModel: ObservableObject {
         currentTip = tips.randomElement()
         showTip = true
         
-        // Скрываем подсказку через 5 секунд
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
             self?.showTip = false
         }

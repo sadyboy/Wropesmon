@@ -18,7 +18,7 @@ struct WorkoutView: View {
                 tipOverlay
             }
         }
-        .navigationTitle("Тренировка")
+        .navigationTitle("Training")
     }
     
     private var backgroundGradient: some View {
@@ -74,7 +74,7 @@ struct WorkoutView: View {
                 TipsSheet(exercise: viewModel.currentExercise)
             }
             
-            Button("Следующее упражнение") {
+            Button("Next exercise") {
                 withAnimation {
                     viewModel.nextExercise()
                 }
@@ -107,14 +107,14 @@ struct WorkoutView: View {
                 .foregroundColor(.green)
                 .pulseAnimation()
             
-            Text("Тренировка завершена!")
-                .font(.title)
-                .fontWeight(.bold)
-            
-            Text("Время тренировки: \(timeString(from: viewModel.totalWorkoutTime))")
+            Text("Workout complete!")
+            .font(.title)
+            .fontWeight(.bold)
+
+            Text("Workout time: \(timeString(from: viewModel.totalWorkoutTime))")
                 .font(.title2)
             
-            Button("Завершить") {
+            Button("Finish") {
                 // Действие для возврата к списку тренировок
             }
             .buttonStyle(.borderedProminent)
@@ -147,15 +147,15 @@ struct ExerciseCard: View {
             
             if let sets = exercise.sets, let reps = exercise.repetitions {
                 HStack {
-                    Label("\(sets) подхода", systemImage: "repeat.circle")
+                    Label("\(sets) of approach", systemImage: "repeat.circle")
                     Spacer()
-                    Label("\(reps) повторений", systemImage: "figure.walk")
+                    Label("\(reps) of repetitions", systemImage: "figure.walk")
                 }
                 .font(.callout)
             }
             
             if let videoURL = exercise.videoURL {
-                Button("Смотреть видео") {
+                Button("Watch video") {
                     isShowingVideo = true
                 }
                 .sheet(isPresented: $isShowingVideo) {
@@ -183,8 +183,8 @@ struct TipsSheet: View {
                     }
                 }
             }
-            .navigationTitle("Советы тренера")
-            .navigationBarItems(trailing: Button("Готово") {
+            .navigationTitle("Trainer's Tips")
+            .navigationBarItems(trailing: Button("Done") {
                 dismiss()
             })
         }
@@ -228,7 +228,7 @@ struct VideoPlayer: View {
     let url: URL
     
     var body: some View {
-        Text("Видео упражнения")
+        Text("Video exercises")
         // Здесь будет реальный видеоплеер
     }
 }

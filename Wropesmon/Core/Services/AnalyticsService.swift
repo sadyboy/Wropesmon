@@ -41,6 +41,5 @@ class AnalyticsService {
     func logEvent(_ event: AnalyticsEvent) {
         print("Analytics Event: \(event.name)")
         print("Parameters: \(event.parameters)")
-        // Здесь будет реальная интеграция с аналитикой
     }
 }

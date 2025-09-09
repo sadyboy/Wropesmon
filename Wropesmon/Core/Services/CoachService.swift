@@ -9,16 +9,15 @@ class CoachService {
     }
     
     func generatePersonalizedWorkoutPlan(for user: User) -> WorkoutPlan {
-        // Создание персонализированного плана на основе уровня пользователя
         let exercises = recommendedExercises(for: user.fitnessLevel)
         
         return WorkoutPlan(
             id: UUID().uuidString,
-            title: "Персональный план тренировок",
-            description: "План, созданный специально для вашего уровня",
+            title: "Personal training plan",
+            description: "A plan tailored specifically to your level",
             type: user.preferences.favoriteWorkoutTypes.first ?? .cardio,
             difficulty: difficultyForUser(user),
-            duration: 3600, // 1 час
+            duration: 3600,
             exercises: exercises,
             tips: generateTips(for: exercises),
             recommendedEquipment: recommendedEquipment(for: exercises)
@@ -28,26 +27,24 @@ class CoachService {
     func provideWorkoutTips(for exercise: Exercise) -> [String] {
         var tips = exercise.tips
         
-        // Добавляем общие рекомендации по технике
-        tips.append("Следите за дыханием во время выполнения")
-        tips.append("Поддерживайте правильную осанку")
+        tips.append("Watch your breathing while doing it")
+        tips.append("Maintain good posture")
         
         return tips
     }
     
     func adjustWorkoutIntensity(plan: WorkoutPlan, userFeedback: Double) -> WorkoutPlan {
-        // Корректировка плана на основе обратной связи
         var adjustedExercises = plan.exercises
         
-        if userFeedback < 0.3 { // Слишком сложно
+        if userFeedback < 0.3 {
             adjustedExercises = adjustExercisesIntensity(exercises: adjustedExercises, decrease: true)
-        } else if userFeedback > 0.7 { // Слишком легко
+        } else if userFeedback > 0.7 {
             adjustedExercises = adjustExercisesIntensity(exercises: adjustedExercises, decrease: false)
         }
         
         return WorkoutPlan(
             id: UUID().uuidString,
-            title: plan.title + " (Скорректированный)",
+            title: plan.title + " (Adjusted)",
             description: plan.description,
             type: plan.type,
             difficulty: plan.difficulty,
@@ -58,9 +55,7 @@ class CoachService {
         )
     }
     
-    // Вспомогательные методы
     private func recommendedExercises(for level: User.FitnessLevel) -> [Exercise] {
-        // Здесь будет логика подбора упражнений
         return []
     }
     
@@ -77,16 +72,14 @@ class CoachService {
         exercises.forEach { exercise in
             tips.append(contentsOf: exercise.tips)
         }
-        return Array(Set(tips)) // Убираем дубликаты
+        return Array(Set(tips))
     }
     
     private func recommendedEquipment(for exercises: [Exercise]) -> [Equipment] {
-        // Логика подбора оборудования
         return []
     }
     
     private func adjustExercisesIntensity(exercises: [Exercise], decrease: Bool) -> [Exercise] {
-        // Логика корректировки интенсивности
         return exercises
     }
 }

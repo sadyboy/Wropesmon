@@ -11,20 +11,25 @@ struct SportCategoryView: View {
                 GridItem(.flexible())
             ], spacing: 16) {
                 ForEach(SportCategory.allCases, id: \.self) { category in
-                    CategoryCard(category: category, isSelected: selectedCategory == category)
+                    CategoryCards(category: category, isSelected: selectedCategory == category)
                         .onTapGesture {
                             withAnimation(.spring()) {
-                                selectedCategory = category
+                                if selectedCategory == category {
+                                    selectedCategory = nil
+                                } else {
+                                    selectedCategory = category
+                                }
                             }
                         }
+                                
+                            }
+                        }
+                        .padding()
                 }
-            }
-            .padding()
-        }
-        .navigationTitle("Выберите категорию")
-        .overlay(alignment: .bottom) {
-            if selectedCategory != nil {
-                startButton
+        .navigationTitle("Select category")
+                .overlay(alignment: .bottom) {
+                    if selectedCategory != nil {
+                        startButton
             }
         }
         .sheet(isPresented: $showQuiz) {
@@ -32,13 +37,14 @@ struct SportCategoryView: View {
                 QuizView(category: category)
             }
         }
+   
     }
     
     private var startButton: some View {
         Button(action: {
             showQuiz = true
         }) {
-            Text("Начать квиз")
+            Text("Start Quiz")
                 .font(.title3)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
@@ -52,7 +58,7 @@ struct SportCategoryView: View {
     }
 }
 
-struct CategoryCard: View {
+struct CategoryCards: View {
     let category: SportCategory
     let isSelected: Bool
     

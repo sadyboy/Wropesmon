@@ -1,16 +1,16 @@
 import Foundation
 
 enum SportCategory: String, Codable, CaseIterable {
-    case football = "Футбол"
-    case basketball = "Баскетбол"
-    case volleyball = "Волейбол"
-    case tennis = "Теннис"
-    case swimming = "Плавание"
-    case athletics = "Лёгкая атлетика"
-    case gymnastics = "Гимнастика"
-    case boxing = "Бокс"
-    case martialArts = "Боевые искусства"
-    case yoga = "Йога"
+case football = "Football"
+case basketball = "Basketball"
+case volleyball = "Volleyball"
+case tennis = "Tennis"
+case swimming = "Swimming"
+case athletics = "Athletics"
+case gymnastics = "Gymnastics"
+case boxing = "Boxing"
+case martialArts = "Martial Arts"
+case yoga = "Yoga"
     
     var icon: String {
         switch self {
@@ -28,28 +28,28 @@ enum SportCategory: String, Codable, CaseIterable {
     }
     
     var description: String {
-        switch self {
-        case .football:
-            return "Изучите правила, тактики и историю футбола"
-        case .basketball:
-            return "Узнайте о техниках, стратегиях и звездах баскетбола"
-        case .volleyball:
-            return "Погрузитесь в мир волейбола и его особенности"
-        case .tennis:
-            return "Освойте основы тенниса и его правила"
-        case .swimming:
-            return "Изучите различные стили плавания и техники"
-        case .athletics:
-            return "Узнайте о различных видах легкой атлетики"
-        case .gymnastics:
-            return "Познакомьтесь с видами гимнастики и упражнениями"
-        case .boxing:
-            return "Изучите технику бокса и правила соревнований"
-        case .martialArts:
-            return "Узнайте о различных боевых искусствах и их философии"
-        case .yoga:
-            return "Освойте асаны и принципы йоги"
-        }
+    switch self {
+    case .football:
+    return "Learn the rules, tactics, and history of football"
+    case .basketball:
+    return "Learn about basketball techniques, strategies, and stars"
+    case .volleyball:
+    return "Dive into the world of volleyball and its intricacies"
+    case .tennis:
+    return "Learn the basics of tennis and its rules"
+    case .swimming:
+    return "Learn about different swimming styles and techniques"
+    case .athletics:
+    return "Learn about different types of athletics"
+    case .gymnastics:
+    return "Learn about types of gymnastics and exercises"
+    case .boxing:
+    return "Learn about boxing techniques and competition rules"
+    case .martialArts:
+    return "Learn about different martial arts and their philosophies"
+    case .yoga:
+    return "Learn about yoga asanas and principles"
+    }
     }
     
     var recommendedWorkouts: [WorkoutType] {
@@ -73,5 +73,37 @@ enum SportCategory: String, Codable, CaseIterable {
     
     var difficultyLevels: [QuizDifficulty] {
         [.easy, .medium, .hard]
+    }
+}
+extension SportCategory {
+    static func fromString(_ string: String) -> SportCategory? {
+        let mapping: [String: SportCategory] = [
+            "football": .football,
+            "basketball": .basketball,
+            "volleyball": .volleyball,
+            "tennis": .tennis,
+            "swimming": .swimming,
+            "athletics": .athletics,
+            "gymnastics": .gymnastics,
+            "boxing": .boxing,
+            "martialArts": .martialArts,
+            "yoga": .yoga
+        ]
+        return mapping[string.lowercased()]
+    }
+    
+    var stringValue: String {
+        switch self {
+        case .football: return "football"
+        case .basketball: return "basketball"
+        case .volleyball: return "volleyball"
+        case .tennis: return "tennis"
+        case .swimming: return "swimming"
+        case .athletics: return "athletics"
+        case .gymnastics: return "gymnastics"
+        case .boxing: return "boxing"
+        case .martialArts: return "martialArts"
+        case .yoga: return "yoga"
+        }
     }
 }

@@ -1,12 +1,5 @@
 import Foundation
 
-enum WorkoutType: String, Codable {
-    case cardio
-    case strength
-    case flexibility
-    case sport
-    case recovery
-}
 
 struct WorkoutPlan: Codable, Identifiable {
     let id: String
@@ -40,9 +33,9 @@ enum WorkoutDifficulty: String, Codable {
     
     var recommendedExperience: String {
         switch self {
-        case .beginner: return "0-3 месяца"
-        case .intermediate: return "3-12 месяцев"
-        case .advanced: return "Более 1 года"
+            case .beginner: return "0-3 months"
+            case .intermediate: return "3-12 months"
+            case .advanced: return "More than 1 year"
         }
     }
 }
