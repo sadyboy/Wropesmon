@@ -23,7 +23,6 @@ struct WorkoutDetailView: View {
     
     var body: some View {
         ZStack {
-            // Фон с градиентом
             LinearGradient(
                 gradient: Gradient(colors: [Color.blue.opacity(0.1), Color.purple.opacity(0.05)]),
                 startPoint: .topLeading,
@@ -50,7 +49,6 @@ struct WorkoutDetailView: View {
             }
         }
         .navigationTitle(workout.type.rawValue)
-        .navigationBarTitleDisplayMode(.large)
         .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
         Button("Complete") {
@@ -88,7 +86,7 @@ struct WorkoutDetailView: View {
     private var progressSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Exercise \(currentExerciseIndex + 1) of \(totalExercises)")
-                .font(.subheadline)
+               .font(.anton(.subheadline))
                 .foregroundColor(.secondary)
             
             GeometryReader { geometry in
@@ -127,7 +125,7 @@ struct WorkoutDetailView: View {
                 )
             
             Text(currentExercise.name)
-                .font(.title2)
+               .font(.anton(.h2))
                 .fontWeight(.bold)
                 .padding(.top, 10)
         }
@@ -165,7 +163,7 @@ struct WorkoutDetailView: View {
             // Описание
             VStack(alignment: .leading, spacing: 10) {
                 Text("Description")
-                .font(.headline)
+               .font(.anton(.h1))
 
                 Text(currentExercise.description)
                 .font(.body)
@@ -181,7 +179,7 @@ struct WorkoutDetailView: View {
                 if !currentExercise.tips.isEmpty {
                 VStack(alignment: .leading, spacing: 10) {
                 Text("Tips")
-                .font(.headline)
+               .font(.anton(.h1))
                     ForEach(currentExercise.tips, id: \.self) { tip in
                         HStack(alignment: .top, spacing: 10) {
                             Image(systemName: "lightbulb.fill")
@@ -189,7 +187,7 @@ struct WorkoutDetailView: View {
                                 .font(.system(size: 14))
                             
                             Text(tip)
-                                .font(.subheadline)
+                               .font(.anton(.subheadline))
                                 .foregroundColor(.secondary)
                             
                             Spacer()
@@ -234,7 +232,7 @@ struct WorkoutDetailView: View {
                         .foregroundColor(.primary)
                     
                     Text(isTimerRunning ? "Remaining" : "Done")
-                    .font(.caption)
+                    .font(.anton(.caption))
                     .foregroundColor(.secondary)
                     }
                     }
@@ -247,7 +245,7 @@ struct WorkoutDetailView: View {
                     Image(systemName: "play.fill")
                     Text("Start")
                     }
-                    .font(.headline)
+                   .font(.anton(.h1))
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -260,7 +258,7 @@ struct WorkoutDetailView: View {
                     Image(systemName: "pause.fill")
                     Text("Pause")
                     }
-                        .font(.headline)
+                       .font(.anton(.h1))
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -273,7 +271,7 @@ struct WorkoutDetailView: View {
                             Image(systemName: "stop.fill")
                             Text("Stop")
                         }
-                        .font(.headline)
+                       .font(.anton(.h1))
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -297,7 +295,7 @@ struct WorkoutDetailView: View {
                 Image(systemName: "arrow.left")
                 Text("Back")
                 }
-                .font(.headline)
+               .font(.anton(.h1))
                 .foregroundColor(.white)
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -311,7 +309,7 @@ struct WorkoutDetailView: View {
                 Text(currentExerciseIndex == totalExercises - 1 ? "Finish" : "Next")
                 Image(systemName: "arrow.right")
                 }
-                .font(.headline)
+               .font(.anton(.h1))
                 .foregroundColor(.white)
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -468,3 +466,4 @@ struct WorkoutDetailView_Previews: PreviewProvider {
             }
             }
             }
+

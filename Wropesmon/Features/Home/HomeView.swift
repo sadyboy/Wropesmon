@@ -41,306 +41,385 @@ struct HomeView: View {
     @State private var showingAnalytics = false
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    headerSection
-                    
-                    activityRingSection
-                    
-                    quickStartSection
-                    
-                    workoutAnalyticsSection
- 
+            ZStack {
+                
+                ScrollView {
+                    VStack(spacing: 20) {
+                        headerSection
+                        activityRingSection
+                        quickStartSection
+                        workoutAnalyticsSection
+                        
+                    }
+                    .padding()
                 }
-                .padding()
-            }
-            .background(Color(.systemGroupedBackground).ignoresSafeArea())
-            .navigationTitle("SportIQ")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingProfile = true
-                    } label: {
-                        Image(systemName: "person.circle.fill")
-                            .font(.title2)
-                            .foregroundColor(.blue)
+                .background(
+                    LinearGradient(colors: [.clas1, .colorS], startPoint: .top, endPoint: .bottom)
+                )
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingProfile = true
+                        } label: {
+                            Image(systemName: "person.circle.fill")
+                               .font(.anton(.h2))
+                                .foregroundColor(.blue)
+                        }
                     }
                 }
+                .sheet(item: $selectedWorkout) { workout in
+                    WorkoutDetailView(workout: workout)
+                }
+                .sheet(isPresented: $showingProfile) {
+                    ProfileView()
+                }
+                .sheet(isPresented: $showingAnalytics) {
+                    DetailedAnalyticsView()
+                }
             }
-            .sheet(item: $selectedWorkout) { workout in
-                WorkoutDetailView(workout: workout)
-            }
-            .sheet(isPresented: $showingProfile) {
-                ProfileView()
-            }
-            .sheet(isPresented: $showingAnalytics) {
-                        DetailedAnalyticsView()
-                    }
+            
         }
     }
     
-    // MARK: - Header Section
     private var headerSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 12) {
             if let user = viewModel.currentUser {
-                Text(getGreeting())
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                Text("\(user.username)! 👋")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                
-                HStack {
-                    Text("Level: \(user.fitnessLevel.rawValue)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                HStack(spacing: 14) {
+                    // Аватар
+                    Circle()
+                        .fill(LinearGradient(
+                            gradient: Gradient(colors: [Color.blue.opacity(0.4), Color.purple.opacity(0.5)]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ))
+                        .frame(width: 50, height: 50)
+                        .overlay(
+                            Text(String(user.username.prefix(1)))
+                                .font(.anton(.h2))
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                        )
+                        .shadow(color: .blue.opacity(0.4), radius: 6, x: 0, y: 3)
+                    
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(getGreeting())
+                            .font(.anton(.subheadline))
+                            .foregroundColor(.white.opacity(0.5))
+                        
+                        Text("\(user.username)! 💎")
+                            .font(.anton(.h2))
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                    }
                     
                     Spacer()
                     
-                    Text("Today")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 4)
-                        .background(Capsule().fill(Color.blue.opacity(0.1)))
+                    // День недели + Today
+                    VStack {
+                        Text(Date.now, format: .dateTime.weekday(.wide))
+                            .font(.anton(.caption2))
+                            .foregroundColor(.white.opacity(0.5))
+                        Text("Today")
+                            .font(.anton(.caption))
+                            .foregroundColor(.white.opacity(0.9))
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 4)
+                            .background(
+                                Capsule()
+                                    .fill(Color.blue.opacity(0.25))
+                            )
+                    }
                 }
+                
+                // Уровень + прогресс
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Level: \(user.fitnessLevel.rawValue)")
+                        .font(.footnote)
+                        .foregroundColor(.white.opacity(0.5))
+                    
+                    ProgressView(value: Double(user.fitnessLevel.rawValue) ?? 0,
+                                 total: 10)
+                        .progressViewStyle(LinearProgressViewStyle(tint: .blue))
+                        .frame(height: 5)
+                        .cornerRadius(3)
+                }
+                .padding(.top, 6)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
-                .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
+            LinearGradient(
+                gradient: Gradient(colors: [Color.black.opacity(0.7), Color.black.opacity(0.5)]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: .black.opacity(0.3), radius: 12, x: 0, y: 6)
         )
     }
+    
+
     
     // MARK: - Activity Rings Section
     private var activityRingSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Activity today")
-                .font(.headline)
-                .foregroundColor(.primary)
+                .font(.anton(.h1))
+                .foregroundColor(.white)
             
-            HStack(spacing: 20) {
-                // Калории
-                VStack {
-                    ZStack {
-                        Circle()
-                            .stroke(Color.orange.opacity(0.2), lineWidth: 8)
-                        
-                        Circle()
-                            .trim(from: 0, to: 0.7)
-                            .stroke(
-                                AngularGradient(
-                                    gradient: Gradient(colors: [.orange, .red]),
-                                    center: .center,
-                                    startAngle: .zero,
-                                    endAngle: .degrees(360)
-                                ),
-                                style: StrokeStyle(lineWidth: 8, lineCap: .round)
-                            )
-                            .rotationEffect(.degrees(-90))
-                        
-                        VStack {
-                            Text("\(Int(activeEnergy))")
-                                .font(.system(size: 18, weight: .bold))
-                                .foregroundColor(.primary)
-                            Text("kcal")
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .frame(width: 70, height: 70)
-                    
-                    Text("Calories")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
+            HStack(spacing: 24) {
+                ActivityRingView(
+                    value: activeEnergy,
+                    goal: 500,
+                    gradient: [.orange, .red],
+                    label: "Calories",
+                    unit: "kcal"
+                )
                 
-                VStack {
-                    ZStack {
-                        Circle()
-                            .stroke(Color.green.opacity(0.2), lineWidth: 8)
-                        
-                        Circle()
-                            .trim(from: 0, to: 0.8)
-                            .stroke(
-                                AngularGradient(
-                                    gradient: Gradient(colors: [.green, .mint]),
-                                    center: .center,
-                                    startAngle: .zero,
-                                    endAngle: .degrees(360)
-                                ),
-                                style: StrokeStyle(lineWidth: 8, lineCap: .round)
-                            )
-                            .rotationEffect(.degrees(-90))
-                        
-                        VStack {
-                            Text("\(exerciseMinutes)")
-                                .font(.system(size: 18, weight: .bold))
-                                .foregroundColor(.primary)
-                            Text("min")
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .frame(width: 70, height: 70)
-                    
-                    Text("Exercises")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-                VStack {
-                    ZStack {
-                        Circle()
-                            .stroke(Color.blue.opacity(0.2), lineWidth: 8)
-                        
-                        Circle()
-                            .trim(from: 0, to: 0.9)
-                            .stroke(
-                                AngularGradient(
-                                    gradient: Gradient(colors: [.blue, .purple]),
-                                    center: .center,
-                                    startAngle: .zero,
-                                    endAngle: .degrees(360)
-                                ),
-                                style: StrokeStyle(lineWidth: 8, lineCap: .round)
-                            )
-                            .rotationEffect(.degrees(-90))
-                        
-                        VStack {
-                            Text("\(standHours)")
-                                .font(.system(size: 18, weight: .bold))
-                                .foregroundColor(.primary)
-                            Text("hour")
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .frame(width: 70, height: 70)
-                    
-                    Text("Standing")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
+                ActivityRingView(
+                    value: Double(exerciseMinutes),
+                    goal: 60,
+                    gradient: [.green, .mint],
+                    label: "Exercises",
+                    unit: "min"
+                )
+                
+                ActivityRingView(
+                    value: Double(standHours),
+                    goal: 12,
+                    gradient: [.blue, .purple],
+                    label: "Standing",
+                    unit: "hrs"
+                )
             }
             .frame(maxWidth: .infinity)
         }
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
-                .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
+            LinearGradient(
+                gradient: Gradient(colors: [Color.black.opacity(0.6), Color.black.opacity(0.4)]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: .black.opacity(0.25), radius: 12, x: 0, y: 6)
         )
     }
+
+    // MARK: - Универсальный компонент для колец
+    struct ActivityRingView: View {
+        var value: Double
+        var goal: Double
+        var gradient: [Color]
+        var label: String
+        var unit: String
+        
+        var progress: Double { min(value / goal, 1.0) }
+        
+        var body: some View {
+            VStack {
+                ZStack {
+                    Circle()
+                        .stroke(Color.white.opacity(0.1), lineWidth: 8)
+                    
+                    Circle()
+                        .trim(from: 0, to: progress)
+                        .stroke(
+                            AngularGradient(colors: gradient, center: .center),
+                            style: StrokeStyle(lineWidth: 8, lineCap: .round)
+                        )
+                        .rotationEffect(.degrees(-90))
+                        .animation(.easeOut(duration: 1.0), value: progress)
+                    
+                    VStack {
+                        Text("\(Int(value))")
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(.white)
+                        Text(unit)
+                            .font(.anton(.caption2))
+                            .foregroundColor(.secondary)
+                    }
+                }
+                .frame(width: 72, height: 72)
+                
+                Text(label)
+                    .font(.anton(.caption))
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+
     
     // MARK: - Quick Start Section
-    private var quickStartSection: some View {
+     private var quickStartSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Quick start")
-                .font(.headline)
-                .foregroundColor(.primary)
+                .font(.anton(.h1))
+                .foregroundStyle(.linearGradient(colors: [.orange, .pink], startPoint: .leading, endPoint: .trailing))
             
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 15) {
-                QuickActionButton(
-                    title: "Running",
-                    icon: "figure.run",
-                    color: .orange,
-                    action: { startQuickWorkout(type: .cardio) }
-                )
-                
-                QuickActionButton(
-                    title: "Power",
-                    icon: "dumbbell.fill",
-                    color: .blue,
-                    action: { startQuickWorkout(type: .strength) }
-                )
-                
-                QuickActionButton(
-                    title: "Yoga",
-                    icon: "figure.yoga",
-                    color: .green,
-                    action: { startQuickWorkout(type: .flexibility) }
-                )
-                
-                QuickActionButton(
-                    title: "Rest",
-                    icon: "bed.double.fill",
-                    color: .purple,
-                    action: { startQuickWorkout(type: .recovery) }
-                )
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
+                QuickStartCard(title: "Running", icon: "figure.run", colors: [.orange, .red]) {
+                    startQuickWorkout(type: .cardio)
+                }
+                QuickStartCard(title: "Power", icon: "dumbbell.fill", colors: [.blue, .cyan]) {
+                    startQuickWorkout(type: .strength)
+                }
+                QuickStartCard(title: "Yoga", icon: "figure.yoga", colors: [.green, .mint]) {
+                    startQuickWorkout(type: .flexibility)
+                }
+                QuickStartCard(title: "Rest", icon: "bed.double.fill", colors: [.purple, .pink]) {
+                    startQuickWorkout(type: .recovery)
+                }
             }
         }
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
-                .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
+            LinearGradient(
+                gradient: Gradient(colors: [Color.black.opacity(0.6), Color.black.opacity(0.4)]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: .black.opacity(0.25), radius: 12, x: 0, y: 6)
         )
     }
 
+    // 🔹 Кастомная кнопка
+    struct QuickStartCard: View {
+        var title: String
+        var icon: String
+        var colors: [Color]
+        var action: () -> Void
+        
+        var body: some View {
+            Button(action: action) {
+                VStack(spacing: 12) {
+                    Image(systemName: icon)
+                        .font(.system(size: 28, weight: .bold))
+                        .foregroundColor(.white)
+                        .frame(width: 56, height: 56)
+                        .background(
+                            LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
+                        )
+                        .clipShape(Circle())
+                    
+                    Text(title)
+                        .font(.subheadline)
+                        .foregroundColor(.white.opacity(0.9))
+                }
+                .frame(maxWidth: .infinity, minHeight: 120)
+                .background(
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color.black.opacity(0.3), Color.black.opacity(0.4)]),
+                        startPoint: .bottom,
+                        endPoint: .top
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                )
+                .shadow(color: colors.first!.opacity(0.3), radius: 8, x: 0, y: 4)
+            }
+            .buttonStyle(.automatic) 
+        }
+    }
+
+
     // MARK: - Workout Analytics Section (заменяет Categories)
-    private var workoutAnalyticsSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
+     private var workoutAnalyticsSection: some View {
+        VStack(alignment: .leading, spacing: 20) {
             HStack {
                 Text("Training statistics")
-                    .font(.headline)
-                    .foregroundColor(.primary)
+                    .font(.anton(.h1))
+                    .foregroundStyle(.linearGradient(colors: [.blue, .indigo], startPoint: .leading, endPoint: .trailing))
                 
                 Spacer()
                 
                 Button("More details") {
                     showingAnalytics.toggle()
                 }
-                .font(.subheadline)
-                .foregroundColor(.blue)
+                .font(.subheadline.weight(.semibold))
+                .foregroundColor(.white.opacity(0.9))
             }
             
             weeklyActivityChart
             
-            HStack(spacing: 15) {
-                AnalyticsMetricCard(
-                    value: "\(viewModel.currentUser?.statistics.totalWorkouts ?? 0)",
-                    title: "Workout",
-                    icon: "figure.run",
-                    color: .blue
-                )
+            HStack(spacing: 16) {
+                AnalyticsCard(value: "\(viewModel.currentUser?.statistics.totalWorkouts ?? 0)",
+                              title: "Workout",
+                              icon: "figure.run",
+                              colors: [.blue, .cyan])
                 
-                AnalyticsMetricCard(
-                    value: "\(viewModel.currentUser?.statistics.workoutMinutes ?? 0)",
-                    title: "Minutes",
-                    icon: "clock",
-                    color: .green
-                )
+                AnalyticsCard(value: "\(viewModel.currentUser?.statistics.workoutMinutes ?? 0)",
+                              title: "Minutes",
+                              icon: "clock.fill",
+                              colors: [.green, .mint])
                 
-                AnalyticsMetricCard(
-                    value: "\(viewModel.currentUser?.statistics.streakDays ?? 0)",
-                    title: "Days in a row",
-                    icon: "flame",
-                    color: .orange
-                )
+                AnalyticsCard(value: "\(viewModel.currentUser?.statistics.streakDays ?? 0)",
+                              title: "Streak",
+                              icon: "flame.fill",
+                              colors: [.orange, .red])
             }
         }
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
-                .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
+            LinearGradient(
+                gradient: Gradient(colors: [Color.black.opacity(0.6), Color.black.opacity(0.4)]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: .black.opacity(0.25), radius: 12, x: 0, y: 6)
         )
-        
     }
+
+    // 🔹 Кастомная карточка
+    struct AnalyticsCard: View {
+        var value: String
+        var title: String
+        var icon: String
+        var colors: [Color]
+        
+        var body: some View {
+            VStack(spacing: 8) {
+                Image(systemName: icon)
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundColor(.white)
+                    .frame(width: 44, height: 44)
+                    .background(
+                        LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+                    .clipShape(Circle())
+                
+                Text(value)
+                    .font(.anton(.h2).bold())
+                    .foregroundColor(.white)
+                
+                Text(title)
+                    .font(.anton(.caption))
+                    .foregroundColor(.white.opacity(0.7))
+            }
+            .frame(maxWidth: .infinity, minHeight: 120)
+            .background(
+                LinearGradient(
+                    gradient: Gradient(colors: [Color.white.opacity(0.3), Color.white.opacity(0.4)]),
+                    startPoint: .bottom,
+                    endPoint: .top
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+            )
+            .shadow(color: colors.first!.opacity(0.25), radius: 8, x: 0, y: 4)
+        }
+    }
+
 
     // MARK: - Weekly Activity Chart
     private var weeklyActivityChart: some View {
         
         VStack(alignment: .leading, spacing: 12) {
             Text("Activity for the week")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+               .font(.anton(.subheadline))
+                .foregroundColor(.white)
             
             HStack(alignment: .bottom, spacing: 8) {
             
@@ -348,7 +427,7 @@ struct HomeView: View {
                     VStack(spacing: 6) {
                         Text("\(day.activityLevel)")
                             .font(.system(size: 10))
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.white.opacity(0.7))
                         
                         RoundedRectangle(cornerRadius: 4)
                             .fill(day.activityLevel > 0 ? Color.blue : Color.gray.opacity(0.3))
@@ -356,7 +435,7 @@ struct HomeView: View {
                         
                         Text(day.shortName)
                             .font(.system(size: 10))
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.white.opacity(0.7))
                     }
                     .frame(maxWidth: .infinity)
                 }
@@ -391,7 +470,7 @@ struct HomeView: View {
                 
                 Text(title)
                     .font(.system(size: 12))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.white.opacity(0.7))
                     .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
@@ -406,7 +485,7 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text("Quiz statistics")
-                    .font(.headline)
+                   .font(.anton(.h1))
                     .foregroundColor(.primary)
                 
                 Spacer()
@@ -414,7 +493,7 @@ struct HomeView: View {
                 Button("All quizzes") {
                     // Переход к списку квизов
                 }
-                .font(.subheadline)
+               .font(.anton(.subheadline))
                 .foregroundColor(.blue)
             }
             
@@ -519,7 +598,7 @@ struct HomeView: View {
                         .font(.system(size: 14, weight: .semibold))
                     Text(label)
                         .font(.system(size: 10))
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.white.opacity(0.7))
                 }
             }
         }
@@ -531,21 +610,29 @@ struct HomeView: View {
         
         var body: some View {
             NavigationView {
-                ScrollView {
-                    VStack(spacing: 20) {
-                        overallStatsSection
-                        detailedWorkoutStatsSection
-                        detailedQuizStatsSection
-                        achievementsSection
+                ZStack {
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color.black.opacity(0.9), Color.blue.opacity(0.4)]),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                    .ignoresSafeArea()
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            overallStatsSection
+                            detailedWorkoutStatsSection
+                            detailedQuizStatsSection
+                            achievementsSection
+                        }
+                        .padding()
                     }
-                    .padding()
-                }
-                .navigationTitle("Detailed analytics")
-                .navigationBarTitleDisplayMode(.large)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Ready") {
-                            // Закрыть экран
+                    .navigationTitle("Detailed analytics")
+                    .navigationBarTitleDisplayMode(.large)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Ready") {
+                                // Закрыть экран
+                            }
                         }
                     }
                 }
@@ -556,56 +643,34 @@ struct HomeView: View {
         private var overallStatsSection: some View {
             VStack(alignment: .leading, spacing: 16) {
                 Text("General statistics")
-                    .font(.title2)
+                    .font(.anton(.h2))
                     .fontWeight(.bold)
+                    .foregroundColor(.white)
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 15) {
-                    StatCard(
-                        icon: "figure.run",
-                        value: "\(viewModel.currentUser?.statistics.totalWorkouts ?? 0)",
-                        title: "Workout",
-                        color: .blue
-                    )
-                    
-                    StatCard(
-                        icon: "questionmark.circle",
-                        value: "\(viewModel.currentUser?.statistics.totalQuizzes ?? 0)",
-                        title: "Quize",
-                        color: .green
-                    )
-                    
-                    StatCard(
-                        icon: "clock",
-                        value: "\(viewModel.currentUser?.statistics.workoutMinutes ?? 0)",
-                        title: "minutes",
-                        color: .orange
-                    )
-                    
-                    StatCard(
-                        icon: "flame",
-                        value: "\(viewModel.currentUser?.statistics.streakDays ?? 0)",
-                        title: "Days in a row",
-                        color: .red
-                    )
+                    StatCard(icon: "figure.run", value: "\(viewModel.currentUser?.statistics.totalWorkouts ?? 0)", title: "Workout", color: .blue)
+                    StatCard(icon: "questionmark.circle", value: "\(viewModel.currentUser?.statistics.totalQuizzes ?? 0)", title: "Quizzes", color: .green)
+                    StatCard(icon: "clock", value: "\(viewModel.currentUser?.statistics.workoutMinutes ?? 0)", title: "Minutes", color: .orange)
+                    StatCard(icon: "flame", value: "\(viewModel.currentUser?.statistics.streakDays ?? 0)", title: "Days in a row", color: .red)
                 }
             }
             .padding()
-            .background(Color.white)
-            .cornerRadius(15)
-            .shadow(radius: 5)
+            .background(.ultraThinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
         }
         
         // MARK: - Detailed Workout Stats Section
         private var detailedWorkoutStatsSection: some View {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Training statistics")
-                    .font(.title2)
+                   .font(.anton(.h2))
                     .fontWeight(.bold)
                 
                 // График активности по типам тренировок
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Distribution by types")
-                        .font(.headline)
+                       .font(.anton(.h1))
                     
                     HStack(alignment: .bottom, spacing: 10) {
                         ForEach(WorkoutType.allCases, id: \.self) { type in
@@ -658,7 +723,7 @@ struct HomeView: View {
         private var detailedQuizStatsSection: some View {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Quiz statistics")
-                    .font(.title2)
+                   .font(.anton(.h2))
                     .fontWeight(.bold)
                 
                 // Прогресс точности
@@ -689,16 +754,16 @@ struct HomeView: View {
                 // Распределение по категориям
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Results by category")
-                        .font(.headline)
+                       .font(.anton(.h1))
                     
                     ForEach(SportCategory.allCases.prefix(3), id: \.self) { category in
                         HStack {
                             Text(category.icon)
                             Text(category.rawValue)
-                                .font(.subheadline)
+                               .font(.anton(.subheadline))
                             Spacer()
                             Text("\(categoryQuizScore(category)) points")
-                                .font(.subheadline)
+                               .font(.anton(.subheadline))
                                 .foregroundColor(.secondary)
                         }
                         .padding(.vertical, 4)
@@ -718,7 +783,7 @@ struct HomeView: View {
         private var achievementsSection: some View {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Achievements")
-                    .font(.title2)
+                   .font(.anton(.h2))
                     .fontWeight(.bold)
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 15) {
@@ -730,7 +795,7 @@ struct HomeView: View {
                 if viewModel.achievements.count > 6 {
                     Button("All achievements") {
                     }
-                    .font(.subheadline)
+                   .font(.anton(.subheadline))
                     .foregroundColor(.blue)
                     .frame(maxWidth: .infinity)
                 }
@@ -781,26 +846,23 @@ struct HomeView: View {
         var body: some View {
             ZStack {
                 Circle()
-                    .stroke(Color.gray.opacity(0.3), lineWidth: 12)
+                    .stroke(Color.white.opacity(0.1), lineWidth: 12)
                     .frame(width: 80, height: 80)
                 
                 Circle()
-                    .trim(from: 0, to: 0.75) // 75% точность для демонстрации
+                    .trim(from: 0, to: 0.75)
                     .stroke(
-                        AngularGradient(
-                            gradient: Gradient(colors: [.green, .blue]),
-                            center: .center,
-                            startAngle: .zero,
-                            endAngle: .degrees(360)
-                        ),
+                        AngularGradient(colors: [.green, .blue], center: .center),
                         style: StrokeStyle(lineWidth: 12, lineCap: .round)
                     )
                     .frame(width: 80, height: 80)
                     .rotationEffect(.degrees(-90))
+                    .shadow(color: .green.opacity(0.3), radius: 8, x: 0, y: 4)
                 
                 VStack {
                     Text("75%")
                         .font(.system(size: 16, weight: .bold))
+                        .foregroundColor(.white)
                     Text("Accuracy")
                         .font(.system(size: 10))
                         .foregroundColor(.secondary)
@@ -818,15 +880,15 @@ struct HomeView: View {
         var body: some View {
             VStack(spacing: 8) {
                 Image(systemName: icon)
-                    .font(.title3)
+                   .font(.anton(.h3))
                     .foregroundColor(color)
                 
                 Text(value)
-                    .font(.title2)
+                   .font(.anton(.h2))
                     .fontWeight(.bold)
                 
                 Text(title)
-                    .font(.caption)
+                    .font(.anton(.caption))
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
             }
@@ -843,20 +905,23 @@ struct HomeView: View {
         var body: some View {
             VStack(spacing: 8) {
                 Image(systemName: achievement.iconName)
-                    .font(.title2)
+                    .font(.system(size: 28))
                     .foregroundColor(achievement.isUnlocked ? .yellow : .gray)
-                    .frame(width: 50, height: 50)
-                    .background(Circle().fill(achievement.isUnlocked ? Color.blue.opacity(0.2) : Color.gray.opacity(0.2)))
+                    .frame(width: 56, height: 56)
+                    .background(
+                        Circle().fill(achievement.isUnlocked ? Color.blue.opacity(0.4) : Color.black.opacity(0.3))
+                    )
+                    .shadow(color: achievement.isUnlocked ? .yellow.opacity(0.4) : .clear,
+                            radius: 6, x: 0, y: 3)
                 
                 Text(achievement.title)
-                    .font(.system(size: 10))
-                    .foregroundColor(achievement.isUnlocked ? .primary : .secondary)
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundColor(achievement.isUnlocked ? .white : .secondary)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
             }
         }
     }
-
     // MARK: - Stat Card
     struct StatCard: View {
         let icon: String
@@ -865,25 +930,33 @@ struct HomeView: View {
         let color: Color
         
         var body: some View {
-            VStack(spacing: 8) {
-                Image(systemName: icon)
-                    .font(.title2)
-                    .foregroundColor(color)
-                
-                Text(value)
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                Text(title)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                VStack(spacing: 8) {
+                    Image(systemName: icon)
+                        .font(.system(size: 28, weight: .bold))
+                        .foregroundColor(.white)
+                        .frame(width: 52, height: 52)
+                        .background(
+                            LinearGradient(colors: [color, color.opacity(0.7)],
+                                           startPoint: .topLeading, endPoint: .bottomTrailing)
+                        )
+                        .clipShape(Circle())
+                        .shadow(color: color.opacity(0.4), radius: 8, x: 0, y: 4)
+                    
+                    Text(value)
+                        .font(.anton(.h1))
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                    
+                    Text(title)
+                        .font(.anton(.caption))
+                        .foregroundColor(.secondary)
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
             }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(color.opacity(0.1))
-            .cornerRadius(12)
         }
-    }
 
     
     // MARK: - Helper Methods
@@ -1001,11 +1074,11 @@ struct QuickActionButton: View {
         Button(action: action) {
             VStack(spacing: 12) {
                 Image(systemName: icon)
-                    .font(.title2)
+                   .font(.anton(.h2))
                     .foregroundColor(.white)
                 
                 Text(title)
-                    .font(.subheadline)
+                   .font(.anton(.subheadline))
                     .fontWeight(.medium)
                     .foregroundColor(.white)
             }
@@ -1027,13 +1100,13 @@ struct CategoryCard: View {
         Button(action: action) {
             HStack {
                 Image(systemName: iconForWorkoutType(type))
-                    .font(.title3)
+                   .font(.anton(.h3))
                     .foregroundColor(.white)
                     .frame(width: 40, height: 40)
                     .background(Circle().fill(colorForWorkoutType(type).opacity(0.8)))
                 
                 Text(type.rawValue)
-                    .font(.subheadline)
+                   .font(.anton(.subheadline))
                     .fontWeight(.medium)
                     .foregroundColor(.primary)
                     .lineLimit(1)
@@ -1069,3 +1142,4 @@ struct CategoryCard: View {
         }
     }
 }
+

@@ -13,3 +13,4 @@ class QuizService {
         return try decoder.decode(Quiz.self, from: data)
     }
 }
+

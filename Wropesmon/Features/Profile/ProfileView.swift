@@ -6,20 +6,27 @@ struct ProfileView: View {
     @State private var showingEditProfile = false
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                profileHeader
-                statisticsSection
-                achievementsSection
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color.clas1.opacity(0.8), Color.black.opacity(0.4)]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            ScrollView {
+                VStack(spacing: 20) {
+                    profileHeader
+                    statisticsSection
+                    achievementsSection
+                }
+                .padding()
             }
-            .padding()
-        }
-        .navigationTitle("Profile")
-        .sheet(isPresented: $showingEditProfile) {
-            ProfileEditView()
+            .navigationTitle("Profile")
+            .sheet(isPresented: $showingEditProfile) {
+                ProfileEditView()
+            }
         }
     }
-    
     private var profileHeader: some View {
         VStack(spacing: 15) {
             if let image = viewModel.profileImage {
@@ -37,12 +44,13 @@ struct ProfileView: View {
             
             if let user = viewModel.currentUser {
                 Text(user.username)
-                    .font(.title2)
+                   .font(.anton(.h2))
                     .fontWeight(.bold)
+                    .foregroundColor(.white.opacity(0.9))
                 
                 Text("Level: \(user.fitnessLevel.rawValue)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                   .font(.anton(.subheadline))
+                   .foregroundColor(.white.opacity(0.7))
             }
             
             Button("Edit profile") {
@@ -52,15 +60,26 @@ struct ProfileView: View {
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(Color.white)
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [Color.black.opacity(0.6), Color.black.opacity(0.5)]),
+                startPoint: .bottom,
+                endPoint: .top
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: .black.opacity(0.3), radius: 12, x: 0, y: 6)
+        )
         .cornerRadius(15)
         .shadow(radius: 5)
     }
     
     private var statisticsSection: some View {
+        
         VStack(alignment: .leading, spacing: 10) {
             Text("Statistics")
-            .font(.title2)
+               
+           .font(.anton(.h2))
+           .foregroundStyle(.linearGradient(colors: [.blue, .indigo], startPoint: .leading, endPoint: .trailing))
             .fontWeight(.bold)
 
             if let user = viewModel.currentUser {
@@ -81,7 +100,9 @@ struct ProfileView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
             Text("Latest Achievements")
-            .font(.title2)
+                    .foregroundStyle(.linearGradient(colors: [.blue, .indigo], startPoint: .leading, endPoint: .trailing))
+
+           .font(.anton(.h2))
             .fontWeight(.bold)
 
             Spacer()
@@ -111,21 +132,31 @@ struct StatCard: View {
     var body: some View {
         VStack(spacing: 10) {
             Image(systemName: icon)
-                .font(.title2)
+               .font(.anton(.h2))
                 .foregroundColor(.blue)
             
             Text(value)
-                .font(.title3)
+               .font(.anton(.h3))
                 .fontWeight(.bold)
+                .foregroundColor(.white.opacity(0.9))
             
             Text(title)
-                .font(.caption)
-                .foregroundColor(.secondary)
+                .font(.anton(.caption))
+                .foregroundColor(.white.opacity(0.7))
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(Color.white)
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [Color.black.opacity(0.5), Color.black.opacity(0.4)]),
+                startPoint: .bottom,
+                endPoint: .top
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: .black.opacity(0.3), radius: 12, x: 0, y: 6)
+        )
         .cornerRadius(10)
         .shadow(radius: 3)
     }
 }
+

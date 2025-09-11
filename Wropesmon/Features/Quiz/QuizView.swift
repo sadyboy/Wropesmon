@@ -68,7 +68,7 @@ import SwiftUI
                 .foregroundColor(.orange)
             
             Text("Loading Error")
-            .font(.title2)
+           .font(.anton(.h2))
             .fontWeight(.bold)
 
             Text(message)
@@ -105,17 +105,17 @@ import SwiftUI
             
             VStack(alignment: .leading) {
                 Text(category.rawValue)
-                    .font(.headline)
+                   .font(.anton(.h1))
                     .fontWeight(.bold)
                 
                 if let timeRemaining = viewModel.timeRemaining {
                     Text("Remaining: \(Int(timeRemaining))s")
-                    .font(.subheadline)
+                   .font(.anton(.subheadline))
                     .foregroundColor(.secondary)
                     }
 
                     Text("Score: \(viewModel.score)")
-                    .font(.subheadline)
+                   .font(.anton(.subheadline))
                     .fontWeight(.semibold)
                     .foregroundColor(.blue)
             }
@@ -131,7 +131,7 @@ import SwiftUI
     private var progressBar: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Question \(viewModel.currentQuestionIndex + 1) from \(viewModel.currentQuiz?.questions.count ?? 0)")
-                .font(.subheadline)
+               .font(.anton(.subheadline))
                 .foregroundColor(.secondary)
             
             GeometryReader { geometry in
@@ -168,7 +168,7 @@ import SwiftUI
                 
                 // Текст вопроса
                 Text(question.question)
-                    .font(.title3)
+                   .font(.anton(.h3))
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                     .padding()
@@ -207,7 +207,7 @@ import SwiftUI
                 if viewModel.showAnswer {
                     VStack(spacing: 12) {
                         Text(viewModel.isAnswerCorrect == true ? "Correct! 🎉" : "Incorrect 😔")
-                            .font(.headline)
+                           .font(.anton(.h1))
                             .foregroundColor(viewModel.isAnswerCorrect == true ? .green : .red)
                         
                         Text(question.explanation)
@@ -223,7 +223,7 @@ import SwiftUI
                             }
                         }) {
                             Text("Next question →")
-                                .font(.headline)
+                               .font(.anton(.h1))
                                 .foregroundColor(.white)
                                 .padding()
                                 .frame(maxWidth: .infinity)
@@ -271,20 +271,20 @@ struct QuizCompletedView: View {
             
             VStack(spacing: 15) {
                 Text(grade)
-                    .font(.title)
+                    .font(.anton(.h1))
                     .fontWeight(.bold)
                     .foregroundColor(percentage > 70 ? .green : .orange)
                 
                 Text("\(score)/\(totalPossible) (\(Int(percentage))%)")
-                    .font(.title2)
+                   .font(.anton(.h2))
                     .fontWeight(.semibold)
                 
                 Text("Category: \(category.rawValue)")
-                .font(.headline)
+               .font(.anton(.h1))
                 .foregroundColor(.secondary)
 
                 Text("Time: \(formatTime(timeSpent))")
-                .font(.subheadline)
+               .font(.anton(.subheadline))
                 .foregroundColor(.secondary)
                 }
 
@@ -294,7 +294,7 @@ struct QuizCompletedView: View {
                 Image(systemName: "chart.bar.fill")
                 Text("See statistics")
                     }
-                    .font(.headline)
+                   .font(.anton(.h1))
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -306,7 +306,7 @@ struct QuizCompletedView: View {
                     // Restart quiz
                 }) {
                     Text("Go again")
-                        .font(.headline)
+                       .font(.anton(.h1))
                         .foregroundColor(.blue)
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -361,7 +361,7 @@ struct QuizStatisticsView: View {
             .foregroundColor(.gray)
 
             Text("Stats are empty for now")
-            .font(.title2)
+           .font(.anton(.h2))
             .fontWeight(.semibold)
 
             Text("Take a few quizzes to see your results here")
@@ -376,7 +376,7 @@ struct QuizStatisticsView: View {
             private var overallStatsView: some View {
             VStack(spacing: 15) {
             Text("General Statistics")
-            .font(.title2)
+           .font(.anton(.h2))
             .fontWeight(.bold)
 
             HStack(spacing: 20) {
@@ -404,7 +404,7 @@ struct QuizStatisticsView: View {
     private var categoryStatsView: some View {
         VStack(spacing: 15) {
             Text("By Category")
-            .font(.title2)
+           .font(.anton(.h2))
             .fontWeight(.bold)
 
             ForEach(Array(Set(results.map { $0.category })), id: \.self) { category in
@@ -420,7 +420,7 @@ struct QuizStatisticsView: View {
             private var bestResultsView: some View {
             VStack(spacing: 15) {
             Text("Best results")
-            .font(.title2)
+           .font(.anton(.h2))
             .fontWeight(.bold)
             
             ForEach(results.prefix(5)) { result in
@@ -449,15 +449,15 @@ struct StatCardse: View {
     var body: some View {
         VStack(spacing: 8) {
             Image(systemName: icon)
-                .font(.title2)
+               .font(.anton(.h2))
                 .foregroundColor(color)
             
             Text(value)
-                .font(.title)
+                .font(.anton(.h1))
                 .fontWeight(.bold)
             
             Text(title)
-                .font(.caption)
+                .font(.anton(.caption))
                 .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity)
@@ -483,21 +483,21 @@ struct CategoryStatRow: View {
     var body: some View {
         HStack {
             Text(category.icon)
-                .font(.title2)
+               .font(.anton(.h2))
             
             VStack(alignment: .leading) {
                 Text(category.rawValue)
-                    .font(.headline)
+                   .font(.anton(.h1))
                 
                 Text("Completed: \(categoryResults.count) times")
-                    .font(.caption)
+                    .font(.anton(.caption))
                     .foregroundColor(.secondary)
             }
             
             Spacer()
             
             Text("\(Int(averageScore))")
-                .font(.title3)
+               .font(.anton(.h3))
                 .fontWeight(.bold)
                 .foregroundColor(.blue)
         }
@@ -513,14 +513,14 @@ struct BestResultRow: View {
     var body: some View {
         HStack {
             Text(result.category.icon)
-                .font(.title2)
+               .font(.anton(.h2))
             
             VStack(alignment: .leading) {
                 Text(result.category.rawValue)
-                    .font(.headline)
+                   .font(.anton(.h1))
                 
                 Text(result.completedAt, style: .date)
-                    .font(.caption)
+                    .font(.anton(.caption))
                     .foregroundColor(.secondary)
             }
             
@@ -528,12 +528,12 @@ struct BestResultRow: View {
             
             VStack(alignment: .trailing) {
                 Text("\(result.score)/\(result.totalPossible)")
-                    .font(.title3)
+                   .font(.anton(.h3))
                     .fontWeight(.bold)
                     .foregroundColor(result.percentage > 70 ? .green : .orange)
                 
                 Text("\(Int(result.percentage))%")
-                    .font(.caption)
+                    .font(.anton(.caption))
                     .foregroundColor(.secondary)
             }
         }

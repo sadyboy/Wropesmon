@@ -67,3 +67,4 @@ enum WorkoutType: String, Codable, CaseIterable {
         }
     }
 }
+

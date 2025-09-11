@@ -33,12 +33,13 @@ struct AchievementCard: View {
                 .opacity(achievement.isUnlocked ? 1 : 0.5)
             
             Text(achievement.title)
-                .font(.headline)
+               .font(.anton(.h1))
+               .foregroundColor(.white.opacity(0.9))
                 .multilineTextAlignment(.center)
             
             Text(achievement.description)
-                .font(.caption)
-                .foregroundColor(.secondary)
+                .font(.anton(.caption))
+                .foregroundColor(.white.opacity(0.7))
                 .multilineTextAlignment(.center)
             
             if achievement.isUnlocked {
@@ -48,7 +49,15 @@ struct AchievementCard: View {
         }
         .padding()
         .frame(height: 180)
-        .background(Color.white)
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [Color.black.opacity(0.6), Color.black.opacity(0.4)]),
+                startPoint: .bottom,
+                endPoint: .top
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: .black.opacity(0.3), radius: 12, x: 0, y: 6)
+        )
         .cornerRadius(15)
         .shadow(radius: 5)
         .overlay(
@@ -57,3 +66,4 @@ struct AchievementCard: View {
         )
     }
 }
+

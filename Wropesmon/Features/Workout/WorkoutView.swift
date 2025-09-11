@@ -23,7 +23,7 @@ struct WorkoutView: View {
     
     private var backgroundGradient: some View {
         LinearGradient(
-            gradient: Gradient(colors: [Color.green.opacity(0.3), Color.blue.opacity(0.3)]),
+            gradient: Gradient(colors: [Color.clas1, Color.black.opacity(0.5)]),
             startPoint: .topLeading,
             endPoint: .bottomTrailing
         )
@@ -46,7 +46,7 @@ struct WorkoutView: View {
             
             if let timeRemaining = viewModel.exerciseTimeRemaining {
                 Text(timeString(from: timeRemaining))
-                    .font(.title2)
+                   .font(.anton(.h2))
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
             }
@@ -67,7 +67,7 @@ struct WorkoutView: View {
         HStack(spacing: 20) {
             Button(action: { showTipSheet = true }) {
                 Image(systemName: "questionmark.circle.fill")
-                    .font(.title)
+                    .font(.anton(.h1))
                     .foregroundColor(.blue)
             }
             .sheet(isPresented: $showTipSheet) {
@@ -108,11 +108,11 @@ struct WorkoutView: View {
                 .pulseAnimation()
             
             Text("Workout complete!")
-            .font(.title)
+            .font(.anton(.h1))
             .fontWeight(.bold)
 
             Text("Workout time: \(timeString(from: viewModel.totalWorkoutTime))")
-                .font(.title2)
+               .font(.anton(.h2))
             
             Button("Finish") {
                 // Действие для возврата к списку тренировок
@@ -139,7 +139,7 @@ struct ExerciseCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(exercise.name)
-                .font(.title2)
+               .font(.anton(.h2))
                 .fontWeight(.bold)
             
             Text(exercise.description)

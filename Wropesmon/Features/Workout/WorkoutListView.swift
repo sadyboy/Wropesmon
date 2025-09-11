@@ -11,20 +11,20 @@ struct WorkoutListView: View {
     @State private var currentQuoteIndex = 0
     
     private let motivationalQuotes = [
-    "Strength is not in muscles, but in will! 💪",
-    "Every workout brings you closer to your goal! 🏆",
-    "Today's work is tomorrow's result! ⚡",
-    "Don't give up, you are stronger than you think! 🔥",
-    "Progress is measured not in kilograms, but in perseverance! 📈"
+        "Strength is not in muscles, but in will! 💪",
+        "Every workout brings you closer to your goal! 🏆",
+        "Today's work is tomorrow's result! ⚡",
+        "Don't give up, you are stronger than you think! 🔥",
+        "Progress is measured not in kilograms, but in perseverance! 📈"
     ]
-    
+ 
     var filteredWorkouts: [WorkoutSession] {
         let allWorkouts = WorkoutType.allCases.flatMap { workoutsFor(type: $0) }
         
         return allWorkouts.filter { workout in
             let matchesSearch = searchText.isEmpty ||
-                              workout.type.rawValue.localizedCaseInsensitiveContains(searchText) ||
-                              workout.exercises.contains { $0.name.localizedCaseInsensitiveContains(searchText) }
+            workout.type.rawValue.localizedCaseInsensitiveContains(searchText) ||
+            workout.exercises.contains { $0.name.localizedCaseInsensitiveContains(searchText) }
             
             let matchesCategory = selectedCategory == nil || workout.type == selectedCategory
             
@@ -33,16 +33,9 @@ struct WorkoutListView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                // Фон с градиентом
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.blue.opacity(0.1), Color.purple.opacity(0.05)]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
+        ZStack {
+            LinearGradient(colors: [.clas1, .colorS], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
-                
                 ScrollView {
                     VStack(spacing: 25) {
                         // Мотивационная цитата
@@ -63,7 +56,6 @@ struct WorkoutListView: View {
                     }
                     .padding()
                 }
-            }
             .navigationTitle("Training")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
@@ -85,6 +77,7 @@ struct WorkoutListView: View {
                 startQuoteAnimation()
             }
         }
+     
     }
     
     // MARK: - Мотивационная цитата
@@ -93,14 +86,14 @@ struct WorkoutListView: View {
             if showMotivationalQuote {
                 Text(motivationalQuotes[currentQuoteIndex])
                     .font(.system(size: 16, weight: .medium, design: .rounded))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.white)
-                            .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+                            .fill(.ultraThinMaterial) // полупрозрачный blur
+                            .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
                     )
                     .transition(.opacity.combined(with: .scale))
             }
@@ -117,7 +110,8 @@ struct WorkoutListView: View {
                     .foregroundColor(.secondary)
                 
                 TextField("Searching for workouts...", text: $searchText)
-                .textFieldStyle(PlainTextFieldStyle())
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .foregroundColor(.white)
                 
                 if !searchText.isEmpty {
                     Button {
@@ -129,10 +123,13 @@ struct WorkoutListView: View {
                 }
             }
             .padding()
-            .background(Color.white)
-            .cornerRadius(15)
-            .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(.ultraThinMaterial)
+            )
+            .shadow(color: .black.opacity(0.3), radius: 6, x: 0, y: 2)
             
+            // Категории
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     ForEach([nil] + WorkoutType.allCases, id: \.self) { category in
@@ -150,28 +147,28 @@ struct WorkoutListView: View {
     
     // MARK: - Быстрая статистика
     private var quickStatsSection: some View {
-    HStack(spacing: 15) {
-    StatCards(
-    icon: "clock.fill",
-    value: "\(filteredWorkouts.count)",
-    title: "Available",
-    color: .blue
-    )
-
-    StatCards(
-    icon: "flame.fill",
-    value: "\(filteredWorkouts.reduce(0) { $0 + ($1.caloriesBurned ?? 0) })",
-    title: "Kcal total",
-    color: .orange
-    )
-
-    StatCards(
-    icon: "figure.walk",
-    value: "\(filteredWorkouts.reduce(0) { $0 + $1.exercises.count })",
-    title: "Exercises",
-    color: .green
-    )
-    }
+        HStack(spacing: 15) {
+            StatCards(
+                icon: "clock.fill",
+                value: "\(filteredWorkouts.count)",
+                title: "Available",
+                color: .blue
+            )
+            
+            StatCards(
+                icon: "flame.fill",
+                value: "\(filteredWorkouts.reduce(0) { $0 + ($1.caloriesBurned ?? 0) })",
+                title: "Kcal total",
+                color: .orange
+            )
+            
+            StatCards(
+                icon: "figure.walk",
+                value: "\(filteredWorkouts.reduce(0) { $0 + $1.exercises.count })",
+                title: "Exercises",
+                color: .green
+            )
+        }
     }
     
     // MARK: - Сетка тренировок
@@ -199,35 +196,38 @@ struct WorkoutListView: View {
     
     // MARK: - Пустое состояние
     private var emptyStateView: some View {
-    VStack(spacing: 20) {
-    Image(systemName: "magnifyingglass")
-    .font(.system(size: 60))
-    .foregroundColor(.secondary)
-    .padding()
-    .background(Circle().fill(Color.white))
-
-    Text("Nothing found")
-    .font(.title3)
-    .fontWeight(.semibold)
-
-    Text("Try changing search parameters or choosing another category")
-    .font(.subheadline)
-    .foregroundColor(.secondary)
-    .multilineTextAlignment(.center)
-
-    Button("Reset filters") {
-    withAnimation {
-    searchText = ""
-    selectedCategory = nil
-    }
-    }
-    .buttonStyle(PrimaryButtonStyle())
-    }
+        VStack(spacing: 20) {
+            Image(systemName: "magnifyingglass")
+                .font(.system(size: 60))
+                .foregroundColor(.white.opacity(0.8))
+                .padding()
+                .background(Circle().fill(Color.blue.opacity(0.25)))
+            
+            Text("Nothing found")
+                .font(.anton(.h3))
+                .fontWeight(.semibold)
+                .foregroundColor(.white)
+            
+            Text("Try changing search parameters or choosing another category")
+                .font(.anton(.subheadline))
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+            
+            Button("Reset filters") {
+                withAnimation {
+                    searchText = ""
+                    selectedCategory = nil
+                }
+            }
+            .buttonStyle(PrimaryButtonStyle())
+        }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(Color.white)
-        .cornerRadius(20)
-        .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.ultraThinMaterial)
+        )
+        .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
     }
     
     // MARK: - Кнопка фильтра
@@ -238,7 +238,7 @@ struct WorkoutListView: View {
             }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle\(showingFilters ? ".fill" : "")")
-                .font(.title2)
+                .font(.anton(.h2))
                 .foregroundColor(.blue)
         }
     }
@@ -286,69 +286,69 @@ struct WorkoutListView: View {
     }
     
     private func generateExercises(for type: WorkoutType) -> [WorkoutExercise] {
-    switch type {
-    case .cardio:
-    return [
-    WorkoutExercise(
-    id: UUID().uuidString,
-    name: "Running",
-    sets: 1,
-    reps: 1,
-    duration: 900,
-    restBetweenSets: 60,
-    description: "Running at a moderate pace to develop endurance",
-    videoURL: nil,
-    tips: ["Watch your breathing", "Keep a good posture"],
-    isCompleted: false
-    )
-    ]
-    case .strength:
-    return [
-    WorkoutExercise(
-    id: UUID().uuidString,
-    name: "Push-ups",
-    sets: 3,
-    reps: 15,
-    duration: nil,
-    restBetweenSets: 60,
-    description: "Classic push-ups",
-    videoURL: nil,
-    tips: ["Keep your elbows close to your body", "Get down to parallel"],
-    isCompleted: false
-    )
-    ]
-    case .flexibility:
-    return [
-    WorkoutExercise(
-    id: UUID().uuidString,
-    name: "Yoga",
-    sets: 1,
-    reps: 1,
-    duration: 1800,
-    restBetweenSets: 0,
-    description: "Flexibility workout",
-    videoURL: nil,
-    tips: ["Breathe deeply", "Don't overexert yourself"],
-    isCompleted: false
-    )
-    ]
-    case .recovery:
-    return [
-    WorkoutExercise(
-    id: UUID().uuidString,
-    name: "Meditation",
-    sets: 1,
-    reps: 1,
-    duration: 900,
-    restBetweenSets: 0,
-    description: "Relaxing meditation",
-    videoURL: nil,
-    tips: ["Focus on your breathing", "Relax all your muscles"],
-    isCompleted: false
-    )
-    ]
-        default:
-            return []
+        switch type {
+            case .cardio:
+                return [
+                    WorkoutExercise(
+                        id: UUID().uuidString,
+                        name: "Running",
+                        sets: 1,
+                        reps: 1,
+                        duration: 900,
+                        restBetweenSets: 60,
+                        description: "Running at a moderate pace to develop endurance",
+                        videoURL: nil,
+                        tips: ["Watch your breathing", "Keep a good posture"],
+                        isCompleted: false
+                    )
+                ]
+            case .strength:
+                return [
+                    WorkoutExercise(
+                        id: UUID().uuidString,
+                        name: "Push-ups",
+                        sets: 3,
+                        reps: 15,
+                        duration: nil,
+                        restBetweenSets: 60,
+                        description: "Classic push-ups",
+                        videoURL: nil,
+                        tips: ["Keep your elbows close to your body", "Get down to parallel"],
+                        isCompleted: false
+                    )
+                ]
+            case .flexibility:
+                return [
+                    WorkoutExercise(
+                        id: UUID().uuidString,
+                        name: "Yoga",
+                        sets: 1,
+                        reps: 1,
+                        duration: 1800,
+                        restBetweenSets: 0,
+                        description: "Flexibility workout",
+                        videoURL: nil,
+                        tips: ["Breathe deeply", "Don't overexert yourself"],
+                        isCompleted: false
+                    )
+                ]
+            case .recovery:
+                return [
+                    WorkoutExercise(
+                        id: UUID().uuidString,
+                        name: "Meditation",
+                        sets: 1,
+                        reps: 1,
+                        duration: 900,
+                        restBetweenSets: 0,
+                        description: "Relaxing meditation",
+                        videoURL: nil,
+                        tips: ["Focus on your breathing", "Relax all your muscles"],
+                        isCompleted: false
+                    )
+                ]
+            default:
+                return []
         }
     }
 }
@@ -362,7 +362,7 @@ struct CategoryPill: View {
     var body: some View {
         Button(action: action) {
             Text(category?.rawValue ?? "All")
-                .font(.subheadline)
+                .font(.anton(.subheadline))
                 .fontWeight(.medium)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
@@ -391,25 +391,29 @@ struct StatCards: View {
         VStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.system(size: 20))
-                .foregroundColor(color)
-                .frame(width: 40, height: 40)
-                .background(color.opacity(0.1))
+                .foregroundColor(.white)
+                .frame(width: 44, height: 44)
+                .background(
+                    LinearGradient(colors: [color, color.opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                )
                 .clipShape(Circle())
             
             Text(value)
                 .font(.system(size: 18, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
+                .foregroundColor(.white)
             
             Text(title)
-                .font(.caption)
+                .font(.anton(.caption))
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
         .padding()
-        .background(Color.white)
-        .cornerRadius(15)
-        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
+        .background(
+            RoundedRectangle(cornerRadius: 18)
+                .fill(.ultraThinMaterial)
+        )
+        .shadow(color: color.opacity(0.25), radius: 6, x: 0, y: 3)
     }
 }
 
@@ -445,3 +449,4 @@ struct WorkoutListView_Previews: PreviewProvider {
         WorkoutListView()
     }
 }
+

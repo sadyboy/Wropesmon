@@ -40,7 +40,9 @@ struct WorkoutCard: View {
                 HStack {
                     Image(systemName: "clock")
                         .font(.system(size: 12))
+                        .foregroundColor(.white.opacity(0.9))
                     Text("\(Int(workout.duration / 60)) min")
+                        .foregroundColor(.white.opacity(0.9))
                     .font(.system(size: 13))
                     }
 
@@ -50,6 +52,7 @@ struct WorkoutCard: View {
                     .font(.system(size: 12))
                     Text("\(calories) kcal")
                             .font(.system(size: 13))
+                            .foregroundColor(.white.opacity(0.7))
                     }
                 }
             }
@@ -78,7 +81,7 @@ struct WorkoutCard: View {
         .frame(height: 180)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
+                .fill(Color.black.opacity(0.3))
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         )
         .overlay(
@@ -86,11 +89,11 @@ struct WorkoutCard: View {
                 .stroke(colorForWorkoutType(workout.type).opacity(0.3), lineWidth: 1)
         )
         .scaleEffect(isAnimating ? 1.02 : 1)
-        .onAppear {
-            withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
-                isAnimating = true
-            }
-        }
+//        .onAppear {
+//            withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
+//                isAnimating = true
+//            }
+//        }
     }
     
     private func colorForWorkoutType(_ type: WorkoutType) -> Color {
@@ -113,3 +116,4 @@ struct WorkoutCard: View {
         }
     }
 }
+
