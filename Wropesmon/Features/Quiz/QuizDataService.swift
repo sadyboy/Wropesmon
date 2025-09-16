@@ -1,10 +1,3 @@
-//
-//  QuizDataService.swift
-//  Wropesmon
-//
-//  Created by Serhii Anp on 08.09.2025.
-//
-
 import Foundation
 class QuizDataService: ObservableObject {
     static let shared = QuizDataService()

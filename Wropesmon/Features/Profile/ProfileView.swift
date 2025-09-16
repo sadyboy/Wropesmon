@@ -107,7 +107,7 @@ struct ProfileView: View {
 
             Spacer()
 
-            NavigationLink("All") {
+            NavigationLink("") {
             AchievementsView()
             }
             }

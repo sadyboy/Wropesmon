@@ -1,7 +1,5 @@
 import SwiftUI
 
-import SwiftUI
-
 struct WorkoutDetailView: View {
     let workout: WorkoutSession
     @Environment(\.presentationMode) var presentationMode
@@ -13,39 +11,29 @@ struct WorkoutDetailView: View {
     @State private var showCompletionAlert = false
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    var currentExercise: WorkoutExercise {
-        workout.exercises[currentExerciseIndex]
+    var currentExercise: WorkoutExercise? {
+        guard workout.exercises.indices.contains(currentExerciseIndex) else { return nil }
+        return workout.exercises[currentExerciseIndex]
     }
-    
     var totalExercises: Int {
         workout.exercises.count
     }
     
     var body: some View {
         ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [Color.blue.opacity(0.1), Color.purple.opacity(0.05)]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-            
-            ScrollView {
-                VStack(spacing: 25) {
-                    // Прогресс бар
-                    progressSection
-                    
-                    // Картинка упражнения
-                    exerciseImageSection
-                    
-                    // Информация об упражнении
-                    exerciseInfoSection
-
-                    timerSection
-
-                    navigationSection
+            Color.black.opacity(0.8)
+                .ignoresSafeArea()
+            VStack {
+                ScrollView {
+                    VStack(spacing: 25) {
+                        progressSection
+                        exerciseImageSection
+                        exerciseInfoSection
+                        timerSection
+                        navigationSection
+                    }
+                    .padding()
                 }
-                .padding()
             }
         }
         .navigationTitle(workout.type.rawValue)
@@ -66,10 +54,9 @@ struct WorkoutDetailView: View {
         .onReceive(timer) { _ in
             if isTimerRunning && timeRemaining > 0 {
                 timeRemaining -= 1
-                timerProgress = Double(timeRemaining) / Double(currentExercise.duration ?? 60)
+                timerProgress = Double(timeRemaining) / Double(currentExercise?.duration ?? 60)
             } else if isTimerRunning {
                 isTimerRunning = false
-                // Автоматически переходим к следующему упражнению
                 if currentExerciseIndex < totalExercises - 1 {
                     goToNextExercise()
                 } else {
@@ -82,12 +69,11 @@ struct WorkoutDetailView: View {
         }
     }
     
-    // MARK: - Прогресс бар
     private var progressSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Exercise \(currentExerciseIndex + 1) of \(totalExercises)")
                .font(.anton(.subheadline))
-                .foregroundColor(.secondary)
+                .foregroundColor(.white)
             
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
@@ -109,34 +95,34 @@ struct WorkoutDetailView: View {
             .frame(height: 8)
         }
     }
-    
-    // MARK: - Картинка упражнения
+
     private var exerciseImageSection: some View {
         VStack {
-            Image(exerciseImageName(for: currentExercise.name))
-                .resizable()
-                .scaledToFit()
-                .frame(height: 250)
-                .cornerRadius(20)
-                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
-                )
-            
-            Text(currentExercise.name)
-               .font(.anton(.h2))
-                .fontWeight(.bold)
-                .padding(.top, 10)
+            if let currentExercise = currentExercise {
+                Image(exerciseImageName(for: currentExercise.name))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 250)
+                    .cornerRadius(20)
+                    .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                    )
+                
+                Text(currentExercise.name)
+                    .font(.anton(.h2))
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .padding(.top, 10)
+            }
         }
     }
     
-    // MARK: - Информация об упражнении
     private var exerciseInfoSection: some View {
         VStack(spacing: 15) {
-            // Детали упражнения
             HStack(spacing: 20) {
-                if let duration = currentExercise.duration {
+                if let duration = currentExercise?.duration {
                 InfoCard(
                 icon: "clock.fill",
                 value: "\(Int(duration)/60) min",
@@ -147,40 +133,39 @@ struct WorkoutDetailView: View {
 
                 InfoCard(
                 icon: "repeat",
-                value: "\(currentExercise.sets)x\(currentExercise.reps)",
+                value: "\(currentExercise?.sets)x\(currentExercise?.reps)",
                 title: "Approaches",
                 color: .orange
                 )
 
                 InfoCard(
                 icon: "restart",
-                value: "\(currentExercise.restBetweenSets)с",
+                value: "\(currentExercise?.restBetweenSets)с",
                 title: "Rest",
                 color: .green
                 )
                 }
-            
-            // Описание
+          
             VStack(alignment: .leading, spacing: 10) {
                 Text("Description")
                .font(.anton(.h1))
-
-                Text(currentExercise.description)
+               .foregroundColor(.white)
+                Text(currentExercise?.description ?? "")
                 .font(.body)
-                .foregroundColor(.secondary)
+                .foregroundColor(.white)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
-                .background(Color.white)
+                .background(Color.black.opacity(0.5))
                 .cornerRadius(15)
-                .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
 
                 // Adviсe
-                if !currentExercise.tips.isEmpty {
+            if !(currentExercise?.tips.isEmpty ?? false) {
                 VStack(alignment: .leading, spacing: 10) {
-                Text("Tips")
-               .font(.anton(.h1))
-                    ForEach(currentExercise.tips, id: \.self) { tip in
+                    Text("Tips")
+                        .foregroundColor(.white)
+                        .font(.anton(.h1))
+                    ForEach(currentExercise?.tips ?? [""], id: \.self) { tip in
                         HStack(alignment: .top, spacing: 10) {
                             Image(systemName: "lightbulb.fill")
                                 .foregroundColor(.yellow)
@@ -188,8 +173,7 @@ struct WorkoutDetailView: View {
                             
                             Text(tip)
                                .font(.anton(.subheadline))
-                                .foregroundColor(.secondary)
-                            
+                                .foregroundColor(.white)
                             Spacer()
                         }
                         .padding(.vertical, 2)
@@ -197,14 +181,14 @@ struct WorkoutDetailView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
-                .background(Color.white)
+                .background(
+                    Color.black.opacity(0.5)
+                )
                 .cornerRadius(15)
-                .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
             }
         }
     }
-    
-    // MARK: - Таймер
+
     private var timerSection: some View {
         VStack(spacing: 20) {
             ZStack {
@@ -229,11 +213,11 @@ struct WorkoutDetailView: View {
                 VStack {
                     Text(formatTime(timeRemaining))
                         .font(.system(size: 28, weight: .bold, design: .monospaced))
-                        .foregroundColor(.primary)
+                        .foregroundColor(.white)
                     
                     Text(isTimerRunning ? "Remaining" : "Done")
                     .font(.anton(.caption))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.white.opacity(0.7))
                     }
                     }
 
@@ -282,12 +266,12 @@ struct WorkoutDetailView: View {
             }
         }
         .padding()
-        .background(Color.white)
+        .background(Color.black.opacity(0.5))
         .cornerRadius(20)
+        .foregroundColor(.white)
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
     
-    // MARK: - Навигация
     private var navigationSection: some View {
         HStack(spacing: 15) {
             Button(action: goToPreviousExercise) {
@@ -343,7 +327,7 @@ struct WorkoutDetailView: View {
     }
     
     private func setupExercise() {
-        timeRemaining = Int(currentExercise.duration ?? 60)
+        timeRemaining = Int(currentExercise?.duration ?? 60)
         timerProgress = 1.0
         isTimerRunning = false
     }
@@ -403,16 +387,17 @@ struct InfoCard: View {
             
             Text(value)
                 .font(.system(size: 16, weight: .bold))
-                .foregroundColor(.primary)
+                .foregroundColor(.white)
             
             Text(title)
                 .font(.system(size: 12))
-                .foregroundColor(.secondary)
+                .foregroundColor(.white.opacity(0.7))
         }
         .frame(maxWidth: .infinity)
         .padding()
-        .background(Color.white)
+        .background(Color.black.opacity(0.5))
         .cornerRadius(15)
+        .foregroundColor(.white)
         .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }

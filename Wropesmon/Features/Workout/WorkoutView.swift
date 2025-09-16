@@ -115,7 +115,6 @@ struct WorkoutView: View {
                .font(.anton(.h2))
             
             Button("Finish") {
-                // Действие для возврата к списку тренировок
             }
             .buttonStyle(.borderedProminent)
         }
@@ -229,6 +228,5 @@ struct VideoPlayer: View {
     
     var body: some View {
         Text("Video exercises")
-        // Здесь будет реальный видеоплеер
     }
 }

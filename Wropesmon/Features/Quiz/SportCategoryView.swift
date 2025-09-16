@@ -41,7 +41,7 @@ struct SportCategoryView: View {
                 startButton
             }
         }
-        .sheet(isPresented: $showQuiz) {
+        .fullScreenCover(isPresented: $showQuiz) {
             if let category = selectedCategory {
                 QuizView(category: category)
             }

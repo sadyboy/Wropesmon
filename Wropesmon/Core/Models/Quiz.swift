@@ -46,9 +46,9 @@ enum QuizDifficulty: String, Codable {
     
     var multiplier: Double {
         switch self {
-        case .easy: return 1.0
-        case .medium: return 1.5
-        case .hard: return 2.0
+            case .easy: return 1.0
+            case .medium: return 1.5
+            case .hard: return 2.0
         }
     }
 }
@@ -67,11 +67,11 @@ struct QuizResult: Codable, Identifiable {
     }
     
     var grade: String {
-    switch percentage {
-    case 90...100: return "Excellent! 🎯"
-    case 70..<90: return "Good! 👍"
-    case 50..<70: return "Not bad! 🙂"
-    default: return "It could be better! 💪"
+        switch percentage {
+            case 90...100: return "Excellent! 🎯"
+            case 70..<90: return "Good! 👍"
+            case 50..<70: return "Not bad! 🙂"
+            default: return "It could be better! 💪"
+        }
     }
-    }
-    }
+}

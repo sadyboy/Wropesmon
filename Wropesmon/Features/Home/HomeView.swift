@@ -86,7 +86,6 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 12) {
             if let user = viewModel.currentUser {
                 HStack(spacing: 14) {
-                    // Аватар
                     Circle()
                         .fill(LinearGradient(
                             gradient: Gradient(colors: [Color.blue.opacity(0.4), Color.purple.opacity(0.5)]),
@@ -115,7 +114,6 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    // День недели + Today
                     VStack {
                         Text(Date.now, format: .dateTime.weekday(.wide))
                             .font(.anton(.caption2))
@@ -131,8 +129,6 @@ struct HomeView: View {
                             )
                     }
                 }
-                
-                // Уровень + прогресс
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Level: \(user.fitnessLevel.rawValue)")
                         .font(.footnote)
@@ -208,7 +204,6 @@ struct HomeView: View {
         )
     }
 
-    // MARK: - Универсальный компонент для колец
     struct ActivityRingView: View {
         var value: Double
         var goal: Double
@@ -286,7 +281,6 @@ struct HomeView: View {
         )
     }
 
-    // 🔹 Кастомная кнопка
     struct QuickStartCard: View {
         var title: String
         var icon: String
@@ -373,7 +367,6 @@ struct HomeView: View {
         )
     }
 
-    // 🔹 Кастомная карточка
     struct AnalyticsCard: View {
         var value: String
         var title: String
@@ -443,10 +436,6 @@ struct HomeView: View {
             .frame(height: 120)
         }
     }
-
-    // MARK: - Supporting Structures
- 
-
     // MARK: - Analytics Metric Card
     struct AnalyticsMetricCard: View {
         let value: String
@@ -491,13 +480,11 @@ struct HomeView: View {
                 Spacer()
                 
                 Button("All quizzes") {
-                    // Переход к списку квизов
                 }
                .font(.anton(.subheadline))
                 .foregroundColor(.blue)
             }
             
-            // Прогресс правильных ответов
             HStack(spacing: 20) {
                 QuizProgressRing(
                     correctAnswers: viewModel.currentUser?.statistics.correctAnswers ?? 0,
@@ -596,6 +583,7 @@ struct HomeView: View {
                 VStack(alignment: .leading) {
                     Text(value)
                         .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(.white)
                     Text(label)
                         .font(.system(size: 10))
                         .foregroundColor(.white.opacity(0.7))
@@ -607,7 +595,7 @@ struct HomeView: View {
     // MARK: - Detailed Analytics View
     struct DetailedAnalyticsView: View {
         @EnvironmentObject var viewModel: AppViewModel
-        
+        @Environment(\.dismiss) var dimiss
         var body: some View {
             NavigationView {
                 ZStack {
@@ -626,13 +614,22 @@ struct HomeView: View {
                         }
                         .padding()
                     }
-                    .navigationTitle("Detailed analytics")
+                    .navigationBarTitleDisplayMode(.inline)
                     .navigationBarTitleDisplayMode(.large)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("Ready") {
-                                // Закрыть экран
+                            Button("Back") {
+                                dimiss.callAsFunction()
                             }
+                            .foregroundColor(.white)
+                           
+                        }
+                    }
+                    .toolbar {
+                        ToolbarItem {
+                            Text("Detailed analytics")
+                                .foregroundColor(.white)
+                                .font(.anton(.h1))
                         }
                     }
                 }
@@ -655,7 +652,7 @@ struct HomeView: View {
                 }
             }
             .padding()
-            .background(.ultraThinMaterial)
+            .background(.black.opacity(0.5))
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
         }
@@ -665,19 +662,20 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Training statistics")
                    .font(.anton(.h2))
+                   .foregroundColor(.white)
                     .fontWeight(.bold)
                 
-                // График активности по типам тренировок
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Distribution by types")
                        .font(.anton(.h1))
+                       .foregroundColor(.white)
                     
                     HStack(alignment: .bottom, spacing: 10) {
                         ForEach(WorkoutType.allCases, id: \.self) { type in
                             VStack(spacing: 6) {
                                 Text("\(typeWorkoutCount(type))")
                                     .font(.system(size: 10))
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.white.opacity(0.7))
                                 
                                 RoundedRectangle(cornerRadius: 4)
                                     .fill(colorForWorkoutType(type))
@@ -685,7 +683,7 @@ struct HomeView: View {
                                 
                                 Text(type.rawValue.prefix(3))
                                     .font(.system(size: 10))
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.white.opacity(0.7))
                             }
                             .frame(maxWidth: .infinity)
                         }
@@ -693,10 +691,9 @@ struct HomeView: View {
                     .frame(height: 100)
                 }
                 .padding()
-                .background(Color.gray.opacity(0.1))
+                .background(Color.black.opacity(0.7))
                 .cornerRadius(10)
                 
-                // Дополнительная статистика
                 HStack(spacing: 15) {
                     MetricCard(
                         value: "\((viewModel.currentUser?.statistics.workoutMinutes ?? 0) / 60)",
@@ -714,7 +711,7 @@ struct HomeView: View {
                 }
             }
             .padding()
-            .background(Color.white)
+            .background(Color.black.opacity(0.5))
             .cornerRadius(15)
             .shadow(radius: 5)
         }
@@ -725,8 +722,8 @@ struct HomeView: View {
                 Text("Quiz statistics")
                    .font(.anton(.h2))
                     .fontWeight(.bold)
+                    .foregroundColor(.white)
                 
-                // Прогресс точности
                 HStack(spacing: 20) {
                     QuizAccuracyRing()
                     
@@ -751,30 +748,31 @@ struct HomeView: View {
                     }
                 }
                 
-                // Распределение по категориям
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Results by category")
                        .font(.anton(.h1))
+                       .foregroundColor(.white)
                     
                     ForEach(SportCategory.allCases.prefix(3), id: \.self) { category in
                         HStack {
                             Text(category.icon)
                             Text(category.rawValue)
                                .font(.anton(.subheadline))
+                               .foregroundColor(.white)
                             Spacer()
                             Text("\(categoryQuizScore(category)) points")
                                .font(.anton(.subheadline))
-                                .foregroundColor(.secondary)
+                               .foregroundColor(.white.opacity(0.7))
                         }
                         .padding(.vertical, 4)
                     }
                 }
                 .padding()
-                .background(Color.gray.opacity(0.1))
+                .background(Color.white.opacity(0.1))
                 .cornerRadius(10)
             }
             .padding()
-            .background(Color.white)
+            .background(Color.black.opacity(0.7))
             .cornerRadius(15)
             .shadow(radius: 5)
         }
@@ -784,6 +782,7 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Achievements")
                    .font(.anton(.h2))
+                   .foregroundColor(.white)
                     .fontWeight(.bold)
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 15) {
@@ -801,14 +800,14 @@ struct HomeView: View {
                 }
             }
             .padding()
-            .background(Color.white)
+            .background(.black.opacity(0.5))
             .cornerRadius(15)
             .shadow(radius: 5)
         }
         
         // MARK: - Helper Methods
         private var totalQuizAnswers: Int {
-            (viewModel.currentUser?.statistics.totalQuizzes ?? 0) * 10 // Предполагаем 10 вопросов на квиз
+            (viewModel.currentUser?.statistics.totalQuizzes ?? 0) * 10
         }
         
         private var quizAccuracy: Int {
@@ -817,7 +816,7 @@ struct HomeView: View {
         }
         
         private var estimatedCaloriesBurned: Int {
-            (viewModel.currentUser?.statistics.workoutMinutes ?? 0) * 10 // Пример: 10 ккал в минуту
+            (viewModel.currentUser?.statistics.workoutMinutes ?? 0) * 10
         }
         
         private func typeWorkoutCount(_ type: WorkoutType) -> Int {
@@ -865,7 +864,7 @@ struct HomeView: View {
                         .foregroundColor(.white)
                     Text("Accuracy")
                         .font(.system(size: 10))
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.white.opacity(0.7))
                 }
             }
         }
@@ -889,7 +888,7 @@ struct HomeView: View {
                 
                 Text(title)
                     .font(.anton(.caption))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.white.opacity(0.7))
                     .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
@@ -916,7 +915,7 @@ struct HomeView: View {
                 
                 Text(achievement.title)
                     .font(.system(size: 10, weight: .medium))
-                    .foregroundColor(achievement.isUnlocked ? .white : .secondary)
+                    .foregroundColor(achievement.isUnlocked ? .white : .white.opacity(0.7))
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
             }
@@ -949,7 +948,7 @@ struct HomeView: View {
                     
                     Text(title)
                         .font(.anton(.caption))
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.white.opacity(0.8))
                 }
                 .frame(maxWidth: .infinity)
                 .padding()

@@ -5,25 +5,26 @@ struct ContentView: View {
     @StateObject private var quizDataService = QuizDataService.shared
     @State private var isDataLoaded = false
     
-    init() {
-        
-    }
+    init() {}
     var body: some View {
-        ZStack {
-            if viewModel.showSplashScreen {
-                SplashScreen()
-            } else {
-                MainTabView()
+        NavigationStack {
+            ZStack {
+                if viewModel.showSplashScreen {
+                    SplashScreen()
+                }
+                else {
+                    MainTabView()
+                }
             }
-        }
-        .animation(.spring(), value: viewModel.showSplashScreen)
-        .onAppear {
-            loadQuizData()
+            .animation(.spring(), value: viewModel.showSplashScreen)
+            .onAppear {
+                loadQuizData()
+            }
         }
     }
     private func loadQuizData() {
         quizDataService.loadAllQuizzes()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             isDataLoaded = true
         }
     }
@@ -33,19 +34,19 @@ struct MainTabView: View {
     @EnvironmentObject var viewModel: AppViewModel
     init() {
         let appearance = UITabBarAppearance()
-        appearance.configureWithTransparentBackground() // <- HERE
+        appearance.configureWithTransparentBackground()
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithTransparentBackground()
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         appearance.stackedLayoutAppearance.normal.iconColor = .white
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-
+        appearance.backgroundColor = .black.withAlphaComponent(0.82)
         appearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color.accentColor)
         appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(Color.accentColor)]
 
         UITabBar.appearance().standardAppearance = appearance
-
     }
+    
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
                 HomeView()
@@ -63,7 +64,6 @@ struct MainTabView: View {
                 Label(Tab.predictions.title, systemImage: Tab.predictions.icon)
             }
             .tag(Tab.predictions)
-            
                 ProfileView()
             .tabItem {
                 Label(Tab.profile.title, systemImage: Tab.profile.icon)
@@ -79,16 +79,16 @@ struct SplashScreen: View {
     
     var body: some View {
         ZStack {
-            Color("AccentColor")
+            LinearGradient(colors: [.clas1, .colorS], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
-                Image(systemName: "figure.run")
+                Image(.brilliant)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 200, height: 200)
                 
-                Text("SportIQ")
+                Text("Forge Diamond")
                     .font(.anton(.display))
                     .fontWeight(.bold)
             }

@@ -38,16 +38,12 @@ struct WorkoutListView: View {
                 .ignoresSafeArea()
                 ScrollView {
                     VStack(spacing: 25) {
-                        // Мотивационная цитата
                         motivationalQuoteSection
                         
-                        // Поиск и фильтры
                         searchAndFilterSection
                         
-                        // Статистика
                         quickStatsSection
                         
-                        // Список тренировок
                         if filteredWorkouts.isEmpty {
                             emptyStateView
                         } else {
@@ -63,24 +59,19 @@ struct WorkoutListView: View {
                     filterButton
                 }
             }
-            .sheet(isPresented: $showingWorkoutDetail) {
-                if let workout = selectedWorkout {
-                    WorkoutDetailView(workout: workout)
-                }
-            }
+            .sheet(item: $selectedWorkout, content: { workout in
+                WorkoutDetailView(workout: workout)
+            })
             .onAppear {
                 withAnimation(.easeInOut(duration: 0.8).delay(0.2)) {
                     animateCards = true
                 }
                 
-                // Анимация цитат
                 startQuoteAnimation()
             }
         }
      
     }
-    
-    // MARK: - Мотивационная цитата
     private var motivationalQuoteSection: some View {
         VStack {
             if showMotivationalQuote {
@@ -92,7 +83,7 @@ struct WorkoutListView: View {
                     .frame(maxWidth: .infinity)
                     .background(
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(.ultraThinMaterial) // полупрозрачный blur
+                            .fill(.ultraThinMaterial)
                             .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
                     )
                     .transition(.opacity.combined(with: .scale))
@@ -101,10 +92,8 @@ struct WorkoutListView: View {
         .animation(.easeInOut(duration: 0.8), value: showMotivationalQuote)
     }
     
-    // MARK: - Поиск и фильтры
     private var searchAndFilterSection: some View {
         VStack(spacing: 15) {
-            // Поле поиска
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.secondary)
@@ -128,8 +117,6 @@ struct WorkoutListView: View {
                     .fill(.ultraThinMaterial)
             )
             .shadow(color: .black.opacity(0.3), radius: 6, x: 0, y: 2)
-            
-            // Категории
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     ForEach([nil] + WorkoutType.allCases, id: \.self) { category in
@@ -145,7 +132,6 @@ struct WorkoutListView: View {
         }
     }
     
-    // MARK: - Быстрая статистика
     private var quickStatsSection: some View {
         HStack(spacing: 15) {
             StatCards(
@@ -170,8 +156,7 @@ struct WorkoutListView: View {
             )
         }
     }
-    
-    // MARK: - Сетка тренировок
+
     private var workoutsGridSection: some View {
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
             ForEach(Array(filteredWorkouts.enumerated()), id: \.element.id) { index, workout in
@@ -185,16 +170,15 @@ struct WorkoutListView: View {
                         value: animateCards
                     )
                     .onTapGesture {
-                        withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7)) {
+//                        withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7)) {
                             selectedWorkout = workout
                             showingWorkoutDetail = true
-                        }
+//                        }
                     }
             }
         }
     }
-    
-    // MARK: - Пустое состояние
+
     private var emptyStateView: some View {
         VStack(spacing: 20) {
             Image(systemName: "magnifyingglass")
@@ -229,8 +213,7 @@ struct WorkoutListView: View {
         )
         .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
     }
-    
-    // MARK: - Кнопка фильтра
+
     private var filterButton: some View {
         Button {
             withAnimation(.spring()) {
@@ -246,8 +229,7 @@ struct WorkoutListView: View {
     // MARK: - Helper Methods
     private func startQuoteAnimation() {
         showMotivationalQuote = true
-        
-        // Меняем цитату каждые 8 секунд
+
         Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { _ in
             withAnimation(.easeInOut(duration: 0.8)) {
                 showMotivationalQuote = false
@@ -368,7 +350,7 @@ struct CategoryPill: View {
                 .padding(.vertical, 8)
                 .background(
                     Capsule()
-                        .fill(isSelected ? Color.blue : Color.white)
+                        .fill(isSelected ? Color.blue : Color.blue.opacity(0.5))
                         .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 2)
                 )
                 .foregroundColor(isSelected ? .white : .primary)
@@ -404,7 +386,7 @@ struct StatCards: View {
             
             Text(title)
                 .font(.anton(.caption))
-                .foregroundColor(.secondary)
+                .foregroundColor(.white.opacity(0.8))
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
@@ -417,8 +399,6 @@ struct StatCards: View {
     }
 }
 
-
-// MARK: - Стили кнопок
 struct ScaleButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

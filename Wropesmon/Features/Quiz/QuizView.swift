@@ -7,34 +7,48 @@ import SwiftUI
     @State private var showStatistics = false
     @State private var isLoading = true
     @State private var errorMessage: String?
-    
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack {
-            backgroundGradient
-            
-            if isLoading {
-                ProgressView("Loading quiz...")
-                    .scaleEffect(1.5)
-            } else if let error = errorMessage {
-                errorView(message: error)
-            } else if viewModel.quizCompleted {
-                QuizCompletedView(
-                    score: viewModel.score,
-                    totalPossible: viewModel.currentQuiz?.totalPoints ?? 0,
-                    category: category,
-                    timeSpent: viewModel.timeSpent,
-                    onSeeStats: { showStatistics = true }
-                )
-            } else {
-                VStack(spacing: 20) {
-                    headerSection
-                    progressBar
-                    questionCard
-                    answerOptions
-                    Spacer()
+        
+                backgroundGradient
+                if isLoading {
+                    ProgressView("Loading quiz...")
+                        .scaleEffect(1.5)
+                } else if let error = errorMessage {
+                    errorView(message: error)
+                } else if viewModel.quizCompleted {
+                   
+                    QuizCompletedView(
+                        score: viewModel.score,
+                        totalPossible: viewModel.currentQuiz?.totalPoints ?? 0,
+                        category: category,
+                        timeSpent: viewModel.timeSpent,
+                        onSeeStats: { showStatistics = true }
+                    )
+                  
+                } else {
+                    ScrollView {
+                        VStack(spacing: 0) {
+                            Button {
+                                dismiss.callAsFunction()
+                            } label: {
+                                Spacer()
+                               Text("Back")
+                                    .foregroundColor(.blue)
+                                    .font(.anton(.h3))
+                            }
+                            .padding()
+                            headerSection
+                            progressBar
+                            questionCard
+                            answerOptions
+                            Spacer()
+                        }
+                    }
+                    .padding()
                 }
-                .padding()
-            }
+       
         }
         .sheet(isPresented: $showStatistics) {
             QuizStatisticsView(results: viewModel.getBestResults())
@@ -49,7 +63,6 @@ import SwiftUI
         isLoading = true
         errorMessage = nil
         
-        // Даем небольшую задержку для плавности
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if let quiz = QuizDataService.shared.getQuiz(for: category) {
                 viewModel.startQuiz(quiz)
@@ -107,11 +120,13 @@ import SwiftUI
                 Text(category.rawValue)
                    .font(.anton(.h1))
                     .fontWeight(.bold)
+                    .foregroundColor(.black)
+
                 
                 if let timeRemaining = viewModel.timeRemaining {
                     Text("Remaining: \(Int(timeRemaining))s")
                    .font(.anton(.subheadline))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.black)
                     }
 
                     Text("Score: \(viewModel.score)")
@@ -155,7 +170,6 @@ import SwiftUI
     private var questionCard: some View {
         VStack(spacing: 0) {
             if let question = viewModel.currentQuestion {
-                // Картинка вопроса
                 if let imageName = question.imageName {
                     Image(imageName)
                         .resizable()
@@ -166,7 +180,6 @@ import SwiftUI
                         .shadow(radius: 5)
                 }
                 
-                // Текст вопроса
                 Text(question.question)
                    .font(.anton(.h3))
                     .fontWeight(.semibold)
@@ -181,6 +194,7 @@ import SwiftUI
                         .degrees(viewModel.showAnswer ? 360 : 0),
                         axis: (x: 0, y: 1, z: 0)
                     )
+                    .foregroundColor(.black)
                     .animation(.spring(response: 0.6), value: viewModel.showAnswer)
             }
         }
@@ -214,6 +228,7 @@ import SwiftUI
                             .font(.callout)
                             .multilineTextAlignment(.center)
                             .padding()
+                        
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(10)
                         
@@ -265,7 +280,6 @@ struct QuizCompletedView: View {
         VStack(spacing: 25) {
             Spacer()
             
-            // Анимированная иконка
 //            LottieView(name: percentage > 70 ? "confetti" : "try_again", loopMode: .playOnce)
                 .frame(height: 150)
             

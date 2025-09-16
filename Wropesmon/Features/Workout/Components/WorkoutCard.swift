@@ -29,13 +29,11 @@ struct WorkoutCard: View {
                     .foregroundColor(colorForWorkoutType(workout.type))
             }
             
-            // Название тренировки
             Text(workout.type.rawValue)
                 .font(.system(size: 16, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
+                .foregroundColor(.white)
                 .lineLimit(1)
             
-            // Детали
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Image(systemName: "clock")
@@ -59,8 +57,7 @@ struct WorkoutCard: View {
             .foregroundColor(.secondary)
             
             Spacer()
-            
-            // Кнопка начала
+
             HStack {
                 Spacer()
                 Text("Start")

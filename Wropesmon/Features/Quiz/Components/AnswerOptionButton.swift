@@ -12,6 +12,8 @@ struct AnswerOptionButton: View {
                 Text(text)
                     .font(.body)
                     .multilineTextAlignment(.leading)
+                    .foregroundColor(.black)
+
                 Spacer()
                 if let isCorrect = isCorrect {
                     Image(systemName: isCorrect ? "checkmark.circle.fill" : "x.circle.fill")

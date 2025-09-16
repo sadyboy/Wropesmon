@@ -11,36 +11,44 @@ struct ProfileEditView: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                Section("Profile Photo") {
-                    VStack {
-                        if let profileImage = profileImage {
-                            profileImage
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 100, height: 100)
-                                .clipShape(Circle())
-                        } else {
-                            Image(systemName: "person.circle.fill")
-                                .resizable()
-                                .frame(width: 100, height: 100)
-                                .foregroundColor(.blue)
+            ZStack {
+                
+                    LinearGradient(colors: [.clas1, .colorS], startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
+                VStack {
+                    Form {
+                        Section("Profile Photo") {
+                            VStack {
+                                if let profileImage = profileImage {
+                                    profileImage
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 100, height: 100)
+                                        .clipShape(Circle())
+                                } else {
+                                    Image(systemName: "person.circle.fill")
+                                        .resizable()
+                                        .frame(width: 100, height: 100)
+                                        .foregroundColor(.black)
+                                }
+                                
+                                PhotosPicker(selection: $selectedItem,
+                                             matching: .images) {
+                                    Text("Select photo")
+                                }
+                            }
+                           
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical)
                         }
                         
-                        PhotosPicker(selection: $selectedItem,
-                                   matching: .images) {
-                            Text("Select photo")
+                        Section("Personal data") {
+                            TextField("Имя", text: $username)
                         }
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical)
-                }
-                
-                Section("Personal data") {
-                    TextField("Имя", text: $username)
                 }
             }
-            .navigationTitle("Edit Profile")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
             leading: Button("Cancel") {
             dismiss()
@@ -54,7 +62,6 @@ struct ProfileEditView: View {
                     if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
                         if let uiImage = UIImage(data: data) {
                             profileImage = Image(uiImage: uiImage)
-                            // Здесь можно сохранить изображение
                         }
                     }
                 }
@@ -65,10 +72,12 @@ struct ProfileEditView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
+      
+      
     }
     
     private func saveProfile() {
-        // Сохраняем изменения в профиле
         appViewModel.updateProfile(username: username)
         dismiss()
     }

@@ -1,10 +1,3 @@
-//
-//  Extension_Font.swift
-//  Wropesmon
-//
-//  Created by Serhii Anp on 10.09.2025.
-//
-
 import Foundation
 import SwiftUI
 
@@ -19,7 +12,6 @@ private enum AntonFontConst {
 }
 
 extension AntonStyle {
-    /// Базовые размеры (pt)
     fileprivate var size: CGFloat {
         switch self {
         case .display: return 34

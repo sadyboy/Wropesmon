@@ -144,6 +144,5 @@ class QuizViewModel: ObservableObject {
     }
     
     private func playSound(named: String) {
-        // Реализация воспроизведения звука
     }
 }
